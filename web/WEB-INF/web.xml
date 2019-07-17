@@ -9,6 +9,14 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>First</servlet-name>
-        <url-pattern>/hello-world</url-pattern>
+        <url-pattern>/first</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>About</servlet-name>
+        <servlet-class>About</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>About</servlet-name>
+        <url-pattern>/about</url-pattern>
     </servlet-mapping>
 </web-app>

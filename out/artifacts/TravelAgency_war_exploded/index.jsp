@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Travel Agency "SoftTravel"$</title>
+    <title>Travel Agency "SoftTravel"</title>
   </head>
   <body>
   <p>Running servlets</p>
-  $END$
   </body>
 </html>

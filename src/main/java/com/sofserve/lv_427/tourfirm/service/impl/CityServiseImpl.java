@@ -17,4 +17,8 @@ public class CityServiseImpl {
   public List<City> getCityList() throws SQLException {
     return cityDao.findAll();
   };
+
+  public List<City> citiesByCountry() throws SQLException {
+    return cityDao.findAllByCountryID(12);
+  }
 }

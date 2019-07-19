@@ -38,12 +38,34 @@ public class CityDao {
 
     ResultSet resultSet = preparedStatement.executeQuery();
 
-    ArrayList<City> cities = new ArrayList<>();
+    List<City> cities = new ArrayList<>();
     while (resultSet.next()) {
       cities.add(
           new City(
               resultSet.getInt(ID), resultSet.getString(CITY_NAME), resultSet.getInt(COUNTRY_ID)));
     }
     return cities;
+  }
+  /**
+   * Method that find and return all Exhibit from DB.
+   *
+   * @return list of clients.
+   * @exception SQLException - error in sql query.
+   * @param
+   */
+  public List<City> findAllByCountryID(int countryID) throws SQLException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("select * from travel_agency.city where " + ID + " = ?");
+    preparedStatement.setInt(1, countryID);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    List<City> citiesByCountry = new ArrayList<>();
+    while (resultSet.next()) {
+      citiesByCountry.add(
+          new City(
+              resultSet.getInt(ID), resultSet.getString(CITY_NAME), resultSet.getInt(COUNTRY_ID)));
+    }
+    return citiesByCountry;
   }
 }

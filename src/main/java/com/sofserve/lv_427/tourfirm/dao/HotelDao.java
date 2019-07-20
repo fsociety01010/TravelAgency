@@ -36,9 +36,10 @@ public class HotelDao {
                 + "WHERE hotel.id IN "
                 + "(Select room.hotel_id FROM room WHERE room.id NOT IN "
                 + "(SELECT room_book.room_id FROM room_book "
-                + "WHERE order_start < ? AND order_end > ?));");
+                + "WHERE order_start > ? AND (order_end > ? OR order_end > ?)));");
     preparedStatement.setString(1, startDate);
     preparedStatement.setString(2, endDate);
+    preparedStatement.setString(3, endDate);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 

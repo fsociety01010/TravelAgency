@@ -1,5 +1,13 @@
+<%@page pageEncoding="UTF-8" %>
 <html>
+<head>
+    <title>TourAgency</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+<jsp:include page="WEB-INF/static/header.jsp"/>
+
+<h2>Привіт, наш любий друг</h2>
+<p>З нами подорожувати легко. Приєднуйся до нас</p>
+
 </body>
 </html>

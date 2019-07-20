@@ -35,12 +35,13 @@ public class RoomDao {
         connection.prepareStatement(
             "SELECT room.* "
                 + "FROM room "
-                + "WHERE room.id NOT IN (SELECT room_book.room_id FROM room_book "
-                + "WHERE order_start < ? AND order_end > ?)"
+                + "WHERE room.id NOT IN (SELECT room_book.room_id FROM room_book " +
+                    "WHERE order_start > ? AND (order_end > ? OR order_end > ?))"
                 + "AND room.hotel_id = ?");
     preparedStatement.setString(1, startDate);
     preparedStatement.setString(2, endDate);
-    preparedStatement.setInt(3, hotelId);
+    preparedStatement.setString(3, endDate);
+    preparedStatement.setInt(4, hotelId);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 

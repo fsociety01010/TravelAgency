@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Visa {
-    private int id;
-    private String visaName;
-    private int countryId;
-    private int clientId;
+  private int id;
+  private String visaName;
+  private int countryId;
+  private int clientId;
 }

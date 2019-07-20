@@ -1,20 +1,43 @@
 package com.sofserve.lv_427.tourfirm;
 
-import com.sofserve.lv_427.tourfirm.dao.CityDao;
-import com.sofserve.lv_427.tourfirm.dao.CountryDao;
-import com.sofserve.lv_427.tourfirm.model.Country;
-import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
+import com.sofserve.lv_427.tourfirm.model.Room;
+import com.sofserve.lv_427.tourfirm.service.impl.RoomServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         CountryDao countryDao =new CountryDao(JdbcConnector.getConnection());
+//        CityServiceImpl servise = new CityServiceImpl();
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-07-20";
+//
+//        List<City> cities = servise.getCityWithAvailableHotels(startDate, endDate);
+//
+//        for(City city : cities) {
+//            System.out.println(city.getCityName());
+//        }
 
-        List<Country> countryList = countryDao.findAll();
-        for ( Country el : countryList ) {
-            System.out.println(el.getCountryName());
-        }
+//        HotelServiceImpl servise = new HotelServiceImpl();
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-07-20";
+//
+//        List<Hotel> hotels = servise.getAvailableHotelsInCity(1, startDate, endDate);
+//
+//        for(Hotel hotel : hotels) {
+//            System.out.println(hotel.getHotelName());
+//        }
+
+//        RoomServiceImpl servise = new RoomServiceImpl();
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-07-20";
+//
+//        List<Room> rooms = servise.getAvailableRoomsByHotel(startDate, endDate, 1);//should return empty list
+//
+//        for(Room room : rooms) {
+//            System.out.println(room.getRoomNumber());
+//        }
+
+
     }
 }

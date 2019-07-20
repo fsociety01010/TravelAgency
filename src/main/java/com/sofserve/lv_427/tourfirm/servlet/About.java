@@ -10,14 +10,13 @@ import java.io.PrintWriter;
 
 @WebServlet("/about")
 public class About extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) {}
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter pw = response.getWriter();
-        pw.println("<html>");
-        pw.println("<h1>Information about our travel agency</h1>");
-        pw.println("</html>");
-    }
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+    PrintWriter pw = response.getWriter();
+    pw.println("<html>");
+    pw.println("<h1>Information about our travel agency</h1>");
+    pw.println("</html>");
+  }
 }

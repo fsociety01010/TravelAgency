@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hotel {
-    private int id;
-    private String hotelName;
-    private int cityId;
+  private int id;
+  private String hotelName;
+  private int cityId;
 }

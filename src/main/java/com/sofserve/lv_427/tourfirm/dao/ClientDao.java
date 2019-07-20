@@ -1,7 +1,6 @@
 package com.sofserve.lv_427.tourfirm.dao;
 
 import com.sofserve.lv_427.tourfirm.model.Client;
-import com.sofserve.lv_427.tourfirm.model.Country;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,24 +12,24 @@ import java.util.List;
 public class ClientDao {
   private Connection connection;
 
-  private final String ID = "id";
-  private final String FIRST_NAME = "first_name";
-  private final String LAST_NAME = "last_name";
-  private final String PHONE_NUMBER = "phone_number";
+  private static final String ID = "id";
+  private static final String FIRST_NAME = "first_name";
+  private static final String LAST_NAME = "last_name";
+  private static final String PHONE_NUMBER = "phone_number";
 
   public ClientDao(Connection connection) {
     this.connection = connection;
   }
 
   /**
-   * Method that find and return all Exhibit from DB.
+   * Method that find and return all Clients from DB.
    *
-   * @return list of clients.
+   * @return list of cities.
    * @exception SQLException - error in sql query.
    */
   public List<Client> findAll() throws SQLException {
     PreparedStatement preparedStatement =
-        connection.prepareStatement("select * from travel_agency.client");
+        connection.prepareStatement("SELECT * FROM travel_agency.client");
 
     ResultSet resultSet = preparedStatement.executeQuery();
 

@@ -1,30 +1,35 @@
 package com.sofserve.lv_427.tourfirm.dao;
 
-import java.sql.*;
+import com.sofserve.lv_427.tourfirm.model.Country;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sofserve.lv_427.tourfirm.model.Country;
 
 public class CountryDao {
   private Connection connection;
 
-  private final String ID = "id";
-  private final String COUNTRY_NAME = "country_name";
+  private static final String ID = "id";
+  private static final String COUNTRY_NAME = "country_name";
 
   public CountryDao(Connection connection) {
     this.connection = connection;
   }
 
   /**
-   * Method that find and return all Exhibit from DB.
+   * Method that find and return all countries from DB.
    *
    * @return list of Country.
    * @exception SQLException - error in sql query.
    */
   public List<Country> findAll() throws SQLException {
     PreparedStatement preparedStatement =
-        connection.prepareStatement("select * from travel_agency.country");
+        connection.prepareStatement("SELECT * FROM travel_agency.country");
 
     ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -33,5 +38,26 @@ public class CountryDao {
       countries.add(new Country(resultSet.getInt(ID), resultSet.getString(COUNTRY_NAME)));
     }
     return countries;
+  }
+
+  /**
+   * Method that find country by id.
+   *
+   * @param id - country ID
+   * @return list of Country.
+   * @exception SQLException - error in sql query.
+   */
+  public Country findById(int id) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("select * from country where " + ID + " = ?");
+    preparedStatement.setInt(1, id);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    if (resultSet.next()) {
+      return new Country(resultSet.getInt(ID), resultSet.getString(COUNTRY_NAME));
+    } else {
+      throw new ClassNotFoundException("In DB no row with id " + id);
+    }
   }
 }

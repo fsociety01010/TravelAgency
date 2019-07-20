@@ -1,4 +1,32 @@
 package com.sofserve.lv_427.tourfirm.service.impl;
 
-public class RoomServiceImpl {
+import com.sofserve.lv_427.tourfirm.dao.RoomDao;
+import com.sofserve.lv_427.tourfirm.model.Room;
+import com.sofserve.lv_427.tourfirm.service.RoomService;
+import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class RoomServiceImpl implements RoomService {
+  RoomDao dao;
+
+  public RoomServiceImpl() throws SQLException, ClassNotFoundException {
+    dao = new RoomDao(JdbcConnector.getConnection());
+  }
+
+  /**
+   * Method that find all rooms available on dates in hotel.
+   *
+   * @param startDate - start booking
+   * @param endDate - end booking
+   * @param hotelId - hotel ID
+   * @return list of hotels.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
+      throws SQLException {
+    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
+  }
 }

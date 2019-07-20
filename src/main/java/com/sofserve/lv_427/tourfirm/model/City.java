@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
-    private int id;
-    private String cityName;
-    private int countyId;
-
+  private int id;
+  private String cityName;
+  private int countyId;
 }

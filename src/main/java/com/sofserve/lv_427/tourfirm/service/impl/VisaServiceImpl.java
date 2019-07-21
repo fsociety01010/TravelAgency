@@ -16,4 +16,14 @@ public class VisaServiceImpl implements VisaService {
     public int getVisaIdByName(String name) throws SQLException, ClassNotFoundException {
         return dao.getId(name);
     }
+
+    /**
+     * @param countryId - id number of the country in a table
+     * @return Count of visa for country
+     * @throws SQLException
+     */
+    @Override
+    public int getCountVisaForCountry(int countryId) throws SQLException {
+        return dao.CountVisaForCountry(countryId);
+    }
 }

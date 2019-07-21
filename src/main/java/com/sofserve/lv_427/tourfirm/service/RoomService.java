@@ -10,4 +10,6 @@ public interface RoomService {
       throws SQLException;
 
   int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException;
+
+  int LoadingRoomsPeriode(String startDate, String endDate, int hotelId) throws SQLException;
 }

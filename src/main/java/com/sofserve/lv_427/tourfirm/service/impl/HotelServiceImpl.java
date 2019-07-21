@@ -1,5 +1,6 @@
 package com.sofserve.lv_427.tourfirm.service.impl;
 
+import com.sofserve.lv_427.tourfirm.dao.CityDao;
 import com.sofserve.lv_427.tourfirm.dao.HotelDao;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 import com.sofserve.lv_427.tourfirm.service.HotelService;
@@ -14,6 +15,11 @@ public class HotelServiceImpl implements HotelService {
 
   public HotelServiceImpl() throws SQLException, ClassNotFoundException {
     dao = new HotelDao(JdbcConnector.getConnection());
+  }
+
+  @Override
+  public List<Hotel> getHotelsByCity(int cityId) throws SQLException{
+    return dao.getHotelsByCity(cityId);
   }
 
   /**

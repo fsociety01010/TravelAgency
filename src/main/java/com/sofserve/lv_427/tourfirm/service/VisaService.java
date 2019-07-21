@@ -5,4 +5,6 @@ import java.sql.SQLException;
 public interface VisaService {
 
   int getVisaIdByName(String name) throws SQLException, ClassNotFoundException;
+
+  int getCountVisaForCountry(int id) throws SQLException;
 }

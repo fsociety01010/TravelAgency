@@ -1,5 +1,6 @@
 package com.sofserve.lv_427.tourfirm.dao;
 
+import com.sofserve.lv_427.tourfirm.model.City;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 
 import java.sql.Connection;
@@ -18,6 +19,29 @@ public class HotelDao {
 
   public HotelDao(Connection connection) {
     this.connection = connection;
+  }
+
+  /**
+   * Method that find all available hotels in a city.
+   *
+   * @param cityId - id of the city
+   * @return list of hotels in city
+   * @exception SQLException - error in sql query.
+   */
+  public List<Hotel> getHotelsByCity(int cityId) throws SQLException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("SELECT  hotel.* from hotel WHERE " + CITY_ID + "= ?");
+    preparedStatement.setInt(1, cityId);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    List<Hotel> hotels = new ArrayList<>();
+    while (resultSet.next()) {
+      hotels.add(
+          new Hotel(
+              resultSet.getInt(ID), resultSet.getString(HOTEL_NAME), resultSet.getInt(CITY_ID)));
+    }
+    return hotels;
   }
 
   /**

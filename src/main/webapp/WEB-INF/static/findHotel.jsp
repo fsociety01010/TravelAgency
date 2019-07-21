@@ -18,7 +18,7 @@
 <h3>Клієнт</h3>
 <select id="client">
     <option>Nazar Vladyka</option>
-    <option>Agarkov</option>
+    <option>Agarkov Oleksandr</option>
     <option>Zakhar</option>
 </select>
 

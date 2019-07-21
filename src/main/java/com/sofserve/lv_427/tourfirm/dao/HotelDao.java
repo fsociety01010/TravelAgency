@@ -1,6 +1,5 @@
 package com.sofserve.lv_427.tourfirm.dao;
 
-import com.sofserve.lv_427.tourfirm.model.City;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 
 import java.sql.Connection;

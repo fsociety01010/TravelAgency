@@ -6,25 +6,25 @@ import com.sofserve.lv_427.tourfirm.model.Room;
 import com.sofserve.lv_427.tourfirm.service.impl.CityServiceImpl;
 import com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl;
 import com.sofserve.lv_427.tourfirm.service.impl.RoomServiceImpl;
+import com.sofserve.lv_427.tourfirm.service.impl.VisaServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
   public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    CityServiceImpl service = new CityServiceImpl();
-    String startDate = "2019-07-12";
-    String endDate = "2019-07-20";
+    //    CityServiceImpl service = new CityServiceImpl();
+    //    String startDate = "2019-07-12";
+    //    String endDate = "2019-07-20";
+    //
+    //    List<City> cities = service.getCityWithAvailableHotels(startDate, endDate);
+    //
+    //    for (City city : cities) {
+    //      System.out.println(city.getCityName());
+    //    }
 
-    List<City> cities = service.getCityWithAvailableHotels(startDate, endDate);
-
-    for (City city : cities) {
-      System.out.println(city.getCityName());
-    }
-
-    HotelServiceImpl hotel = new HotelServiceImpl();
-    List<Hotel> hotels = hotel.getHotelsByCity(1);
-    for (Hotel hot : hotels) System.out.println(hot.getHotelName());
+    //    VisaServiceImpl hotel = new VisaServiceImpl();
+    //    System.out.println(hotel.getCountVisaForCountry(1));
 
     //        HotelServiceImpl service = new HotelServiceImpl();
     //        String startDate = "2019-07-12";

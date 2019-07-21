@@ -34,12 +34,15 @@ public class HotelDao {
         connection.prepareStatement(
             "SELECT DISTINCT hotel.* from hotel "
                 + "WHERE hotel.id IN "
-                + "(Select room.hotel_id FROM room WHERE room.id NOT IN "
+                + "(SELECT room.hotel_id FROM room WHERE room.id NOT IN "
                 + "(SELECT room_book.room_id FROM room_book "
-                + "WHERE order_start > ? AND (order_end > ? OR order_end > ?)));");
+                + "WHERE ((order_start > ? AND order_start < ?) OR (order_start < ? AND order_end > ?) OR (order_end > ? AND order_end < ?))))");
     preparedStatement.setString(1, startDate);
     preparedStatement.setString(2, endDate);
-    preparedStatement.setString(3, endDate);
+    preparedStatement.setString(3, startDate);
+    preparedStatement.setString(4, endDate);
+    preparedStatement.setString(5, startDate);
+    preparedStatement.setString(6, endDate);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 

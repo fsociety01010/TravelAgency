@@ -1,4 +1,8 @@
-<%--
+<%@ page import="com.sofserve.lv_427.tourfirm.model.Client" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %><%--
   Created by IntelliJ IDEA.
   User: Nazar
   Date: 20.07.2019
@@ -12,25 +16,37 @@
     <title>Знайти готель</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-<h2>Знайти готель</h2>
+<jsp:include page="_header.jsp"/>
+<div style="padding-left: 15px">
+    <h2>Знайти готель</h2>
+    <form action="/find" method="post">
+        <h3>Клієнт</h3>
+        <select name="client">
+            <%
+                List<Client> clients = new ClientServiceImpl().getClientList();
 
-<h3>Клієнт</h3>
-<select id="client">
-    <option>Nazar Vladyka</option>
-    <option>Agarkov</option>
-    <option>Zakhar</option>
-</select>
+                for (Client client : clients) { %>
+            <option><%=client.getFirstName() + " " + client.getLastName()%>
+            </option>
+            <% } %>
+        </select>
 
-<h3>Дата заїзду</h3>
-<input type="date" id="start_date" name="trip-start"
-       value="2019-07-20">
+        <h3>Дата заїзду</h3>
+        <input type="date" name="start_date"
+               value=
+                   <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>
+               min= <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>>
 
-<h3>Дата виїзду</h3>
-<input type="date" id="end_date" name="trip-end"
-       value="2019-07-28">
-<br>
-<br>
-<button type="submit">Знайти</button>
+        <h3>Дата виїзду</h3>
+        <input type="date" name="end_date"
+               value="2019-07-28"
+               min=<%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>>
+
+        <br>
+        <button type="submit">Знайти</button>
+
+        <%= session.getAttribute("clientId") %>
+    </form>
+</div>
 </body>
 </html>

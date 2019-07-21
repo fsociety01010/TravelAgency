@@ -24,17 +24,17 @@ public class Main {
 
 //        HotelServiceImpl service = new HotelServiceImpl();
 //        String startDate = "2019-07-12";
-//        String endDate = "2019-07-20";
+//        String endDate = "2019-08-20";
 //
-//        List<Hotel> hotels = service.getAvailableHotelsInCity(1, startDate, endDate);
+//        List<Hotel> hotels = service.getAvailableHotelsInCity(4, startDate, endDate);
 //
 //        for(Hotel hotel : hotels) {
 //            System.out.println(hotel.getHotelName());
 //        }
 
 //        RoomServiceImpl service = new RoomServiceImpl();
-//        String startDate = "2019-07-04";
-//        String endDate = "2019-07-05";
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-08-20";
 //
 //        List<Room> rooms = service.getAvailableRoomsByHotel(startDate, endDate, 7);//should return empty list
 //

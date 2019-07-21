@@ -18,7 +18,6 @@ public class ClientServiceImpl implements ClientService {
   private VisaService visaService;
   private CountryService countryService;
 
-
   public ClientServiceImpl() throws SQLException, ClassNotFoundException {
     dao = new ClientDao(JdbcConnector.getConnection());
     visaService = new VisaServiceImpl();
@@ -42,15 +41,19 @@ public class ClientServiceImpl implements ClientService {
    * @return list of countries.
    * @exception SQLException - error in sql query.
    */
-//  public List<Country> getAvailableCountries(int clientId)
-// throws SQLException, ClassNotFoundException {
-//    List<Country> countries = new ArrayList<>();
-//    List<Visa> visas = visaService.getVisas(clientId);
-//
-//    for(Visa visa : visas) {
-//      countries.add(countryService.findById(visa.getCountryId()));
-//    }
-//
-//    return countries;
-//  }
+  //  public List<Country> getAvailableCountries(int clientId)
+  // throws SQLException, ClassNotFoundException {
+  //    List<Country> countries = new ArrayList<>();
+  //    List<Visa> visas = visaService.getVisas(clientId);
+  //
+  //    for(Visa visa : visas) {
+  //      countries.add(countryService.findById(visa.getCountryId()));
+  //    }
+  //
+  //    return countries;
+  //  }
+
+  public int getClientId(String firstName, String lastName) throws SQLException, ClassNotFoundException {
+    return dao.getClientId(firstName, lastName);
+  }
 }

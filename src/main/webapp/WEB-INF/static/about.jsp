@@ -12,11 +12,13 @@
     <title>Про нас</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-<h2>Про нас</h2>
-<p>На ринку уже понад <b>10</b> років.</p>
-<p><b>16</b> задоволених клієнтів</p>
-<br>
-<p>default_count віз видано в default_country</p>
+<jsp:include page="_header.jsp"/>
+<div style="padding-left: 15px">
+    <h2>Про нас</h2>
+    <p>На ринку уже понад <b>10</b> років.</p>
+    <p><b>16</b> задоволених клієнтів</p>
+    <br>
+    <p>default_count віз видано в default_country</p>
+</div>
 </body>
 </html>

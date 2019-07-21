@@ -56,4 +56,25 @@ public class RoomDao {
     }
     return rooms;
   }
+
+  /**
+   * Method that find and return id of room.
+   *
+   * @param number - room name
+   * @return id of room
+   * @exception SQLException - error in sql query.
+   */
+  public int getId(int number) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+            connection.prepareStatement("select id from room where " + ROOM_NUMBER + " = ?");
+    preparedStatement.setInt(1, number);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    if (resultSet.next()) {
+      return resultSet.getInt("id");
+    } else {
+      throw new ClassNotFoundException("In DB no row with number " + number);
+    }
+  }
 }

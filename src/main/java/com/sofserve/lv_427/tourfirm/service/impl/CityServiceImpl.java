@@ -66,4 +66,9 @@ public class CityServiceImpl implements CityService {
 
     return availableCities;
   }
+
+  @Override
+  public int getCityIdByName(String name) throws SQLException, ClassNotFoundException {
+    return dao.getId(name);
+  }
 }

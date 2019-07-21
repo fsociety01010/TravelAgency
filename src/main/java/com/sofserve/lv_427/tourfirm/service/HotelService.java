@@ -10,4 +10,6 @@ public interface HotelService {
       throws SQLException;
 
   List<Hotel> getAvailableHotelsOnDate(String startDate, String endDate) throws SQLException;
+
+  int getHotelIdByName(String name) throws SQLException, ClassNotFoundException;
 }

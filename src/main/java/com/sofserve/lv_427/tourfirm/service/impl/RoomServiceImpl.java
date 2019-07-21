@@ -29,4 +29,9 @@ public class RoomServiceImpl implements RoomService {
       throws SQLException {
     return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
   }
+
+  @Override
+  public int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException {
+    return dao.getId(number);
+  }
 }

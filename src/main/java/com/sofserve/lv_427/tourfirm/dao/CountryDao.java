@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CountryDao {
   private Connection connection;
 
@@ -58,6 +57,27 @@ public class CountryDao {
       return new Country(resultSet.getInt(ID), resultSet.getString(COUNTRY_NAME));
     } else {
       throw new ClassNotFoundException("In DB no row with id " + id);
+    }
+  }
+
+  /**
+   * Method that find and return id of country.
+   *
+   * @param name - country name
+   * @return id of country
+   * @exception SQLException - error in sql query.
+   */
+  public int getId(String name) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("select id from country where " + COUNTRY_NAME + " = ?");
+    preparedStatement.setString(1, name);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    if (resultSet.next()) {
+      return resultSet.getInt("id");
+    } else {
+      throw new ClassNotFoundException("In DB no row with name " + name);
     }
   }
 }

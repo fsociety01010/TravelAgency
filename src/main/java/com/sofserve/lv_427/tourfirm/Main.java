@@ -1,11 +1,9 @@
 package com.sofserve.lv_427.tourfirm;
 
+import com.sofserve.lv_427.tourfirm.dao.CountryDao;
 import com.sofserve.lv_427.tourfirm.dao.RoomDao;
 import com.sofserve.lv_427.tourfirm.model.*;
-import com.sofserve.lv_427.tourfirm.service.ClientService;
-import com.sofserve.lv_427.tourfirm.service.CountryService;
-import com.sofserve.lv_427.tourfirm.service.RoomService;
-import com.sofserve.lv_427.tourfirm.service.VisaService;
+import com.sofserve.lv_427.tourfirm.service.*;
 import com.sofserve.lv_427.tourfirm.service.impl.*;
 import com.sofserve.lv_427.tourfirm.dao.VisaDao;
 import com.sofserve.lv_427.tourfirm.model.City;
@@ -162,5 +160,17 @@ public class Main {
     //    System.out.println(result[0]);
     //    System.out.println(result[1]);
     //  }
+
+//    CountryDao countryDao = new CountryDao(JdbcConnector.getConnection());
+//    System.out.println(countryDao.getVisitedCountriesByClient(1));
+
+//    HotelService hotelService = new HotelServiceImpl();
+//
+//    hotelService.getClientCountForPeriod(
+//            hotelService.getHotelIdByName(session.getAttribute("hotel").toString()),
+//            session.getAttribute("start_date_hotel_stat").toString(),
+//            session.getAttribute("end_date_hotel_stat").toString()
+//    )
+
   }
 }

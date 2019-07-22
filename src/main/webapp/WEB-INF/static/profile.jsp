@@ -1,7 +1,13 @@
 <%@ page import="com.sofserve.lv_427.tourfirm.model.Client" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.ClientService" %>
-<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %><%--
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.CountryService" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.model.Country" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.VisaService" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.VisaServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.model.Visa" %><%--
   Created by IntelliJ IDEA.
   User: Nazar
   Date: 20.07.2019
@@ -21,6 +27,8 @@
 
     <%
         ClientService clientService = new ClientServiceImpl();
+        VisaService visaService = new VisaServiceImpl();
+        CountryService countryService = new CountryServiceImpl();
         List<Client> clients = clientService.getClientList();
     %>
 
@@ -44,8 +52,23 @@
     %> <h3><%=client.getFirstName() + " " + client.getLastName()%>
 </h3>
     number: <%=client.getPhoneNumber()%>
-    <p>Відвідав: </p>
-    <p>Візи: </p>
+    <p>Відвідав:
+        <%
+            List<Country> visitedCountries = countryService.getVisitedCountriesByClient(Integer.parseInt(session.getAttribute("profileId").toString()));
+            for (Country country : visitedCountries) {
+        %>
+        <%=country.getCountryName()%>
+        <%}%>
+    </p>
+    <p>Візи:
+        <%
+            List<Visa> visas = visaService.getVisasForTheClient(Integer.parseInt(session.getAttribute("profileId").toString()));
+            for (Visa visa : visas) {
+        %>
+        <%=visa.getVisaName()%>
+        <%}%>
+
+    </p>
 
     <%
         }%>

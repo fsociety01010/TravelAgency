@@ -114,7 +114,7 @@ public class HotelDao {
       throws SQLException {
     PreparedStatement preparedStatement =
         connection.prepareStatement(
-            "SELECT COUNT(client_id) FROM room_book WHERE "
+            "SELECT COUNT(client_id) FROM room_book_archive WHERE "
                 + "(order_start >= ? AND order_end <= ? AND room_id IN "
                 + "(SELECT id FROM room where hotel_id = ?))");
     preparedStatement.setString(1, dateStart);
@@ -139,7 +139,7 @@ public class HotelDao {
     List<Integer> bookDays = new ArrayList<>();
     PreparedStatement preparedStatement =
         connection.prepareStatement(
-            "SELECT order_start, order_end FROM room_book WHERE "
+            "SELECT order_start, order_end FROM room_book_archive WHERE "
                 + "(order_start >= ? AND order_end <= ? AND room_id IN "
                 + "(SELECT id FROM room where hotel_id = ?))");
     preparedStatement.setString(1, dateStart);

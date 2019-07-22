@@ -6,5 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface RoomService {
-	List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId) throws SQLException;
+  List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
+      throws SQLException;
 }

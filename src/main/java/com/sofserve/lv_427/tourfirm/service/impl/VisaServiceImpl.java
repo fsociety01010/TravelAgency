@@ -28,15 +28,15 @@ public class VisaServiceImpl implements VisaService {
 		return dao.getVisasCountForTheClient(clientId);
 	}
 
-	/**
-	 * Method that find and return all client visas in DB.
-	 *
-	 * @param clientId - client ID
-	 * @return list of visas
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<Visa> getVisasForTheClient(int clientId) throws SQLException {
+  /**
+   * Method that find and return all client visas in DB.
+   *
+   * @param clientId - client ID
+   * @return list of visas
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Visa> getVisasForTheClient(int clientId) throws SQLException {
 		return dao.getVisasForTheClient(clientId);
 	}
 

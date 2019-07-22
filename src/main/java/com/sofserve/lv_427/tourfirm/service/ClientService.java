@@ -5,5 +5,5 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ClientService {
-	List<Client> getClientList() throws SQLException;
+  List<Client> getClientList() throws SQLException;
 }

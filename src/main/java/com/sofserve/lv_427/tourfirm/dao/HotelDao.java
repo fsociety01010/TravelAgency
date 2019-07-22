@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -117,13 +116,13 @@ public class HotelDao {
 
 	}
 
-	/**
-	 * Method that get 3 numbers from string
-	 *
-	 * @param s - string
-	 * @return 3 numbers
-	 */
-	private int[] get3Int(String s) {
+  /**
+   * Method that get 3 numbers from string
+   *
+   * @param s - string
+   * @return 3 numbers
+   */
+  private int[] get3Int(String s) {
 		String[] s1 = s.split("-");
 		int[] n = new int[3];
 		for (int i = 0; i < 3; i++) {

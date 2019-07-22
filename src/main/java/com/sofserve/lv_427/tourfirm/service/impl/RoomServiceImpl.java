@@ -9,23 +9,24 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class RoomServiceImpl implements RoomService {
-	RoomDao dao;
+  RoomDao dao;
 
-	public RoomServiceImpl() throws SQLException, ClassNotFoundException {
-		dao = new RoomDao(JdbcConnector.getConnection());
-	}
+  public RoomServiceImpl() throws SQLException, ClassNotFoundException {
+    dao = new RoomDao(JdbcConnector.getConnection());
+  }
 
-	/**
-	 * Method that find all rooms available on dates in hotel.
-	 *
-	 * @param startDate - start booking
-	 * @param endDate   - end booking
-	 * @param hotelId   - hotel ID
-	 * @return list of rooms.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId) throws SQLException {
-		return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
-	}
+  /**
+   * Method that find all rooms available on dates in hotel.
+   *
+   * @param startDate - start booking
+   * @param endDate - end booking
+   * @param hotelId - hotel ID
+   * @return list of rooms.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
+      throws SQLException {
+    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
+  }
 }

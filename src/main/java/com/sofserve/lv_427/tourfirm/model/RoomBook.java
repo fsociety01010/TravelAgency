@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoomBook {
-	private int id;
-	private String orderStart;
-	private String orderEnd;
-	private int roomId;
-	private int clientId;
-	
+  private int id;
+  private String orderStart;
+  private String orderEnd;
+  private int roomId;
+  private int clientId;
 }

@@ -9,45 +9,44 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CountryServiceImpl implements CountryService {
-	private CountryDao countryDao;
+  private CountryDao countryDao;
 
-	public CountryServiceImpl() throws SQLException, ClassNotFoundException {
-		countryDao = new CountryDao(JdbcConnector.getConnection());
-	}
+  public CountryServiceImpl() throws SQLException, ClassNotFoundException {
+    countryDao = new CountryDao(JdbcConnector.getConnection());
+  }
 
-	/**
-	 * Method that find all countries.
-	 *
-	 * @return list of countries.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<Country> getCountryList() throws SQLException {
-		return countryDao.findAll();
-	}
+  /**
+   * Method that find all countries.
+   *
+   * @return list of countries.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Country> getCountryList() throws SQLException {
+    return countryDao.findAll();
+  }
 
-	/**
-	 * Method that find country by id.
-	 *
-	 * @param id - country ID
-	 * @return Country.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public Country findById(int id) throws SQLException, ClassNotFoundException {
-		return countryDao.findById(id);
-	}
+  /**
+   * Method that find country by id.
+   *
+   * @param id - country ID
+   * @return Country.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public Country findById(int id) throws SQLException, ClassNotFoundException {
+    return countryDao.findById(id);
+  }
 
-	/**
-	 * Method that find countries which had been visited by client during the
-	 * period.
-	 *
-	 * @param clientId -client ID
-	 * @return list of countries.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<Country> getVisitedCountriesByClient(int clientId) throws SQLException {
-		return countryDao.getVisitedCountriesByClient(clientId);
-	}
+  /**
+   * Method that find countries which had been visited by client during the period.
+   *
+   * @param clientId -client ID
+   * @return list of countries.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Country> getVisitedCountriesByClient(int clientId) throws SQLException {
+    return countryDao.getVisitedCountriesByClient(clientId);
+  }
 }

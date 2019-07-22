@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CountryService {
-  List<Country> getCountryList() throws SQLException;
+	List<Country> getCountryList() throws SQLException;
 
-  Country findById(int id) throws SQLException, ClassNotFoundException;
+	Country findById(int id) throws SQLException, ClassNotFoundException;
+
+	List<Country> getVisitedCountriesByClient(int clientId) throws SQLException;
 }

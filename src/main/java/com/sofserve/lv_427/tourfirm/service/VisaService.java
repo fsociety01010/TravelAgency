@@ -1,3 +1,13 @@
 package com.sofserve.lv_427.tourfirm.service;
 
-public interface VisaService {}
+import java.sql.SQLException;
+import java.util.List;
+
+import com.sofserve.lv_427.tourfirm.model.Country;
+import com.sofserve.lv_427.tourfirm.model.Visa;
+
+public interface VisaService {
+	int getVisasCountForTheClient(int clientId) throws SQLException;
+
+	List<Visa> getVisasForTheClient(int clientId) throws SQLException;
+}

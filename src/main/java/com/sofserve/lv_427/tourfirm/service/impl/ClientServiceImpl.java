@@ -53,4 +53,8 @@ public class ClientServiceImpl implements ClientService {
   public int getClientId(String firstName, String lastName) throws SQLException, ClassNotFoundException {
     return dao.getClientId(firstName, lastName);
   }
+
+  public Client getClient(int id) throws SQLException, ClassNotFoundException {
+    return dao.getClient(id);
+  }
 }

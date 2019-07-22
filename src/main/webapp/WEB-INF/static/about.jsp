@@ -17,7 +17,7 @@
     <title>Про нас</title>
 </head>
 <body>
-<jsp:include page="_header.jsp"/>
+<jsp:include page="modules/_header.jsp"/>
 <div style="padding-left: 15px">
     <h2>Про нас</h2>
     <p>На ринку уже понад <b>10</b> років.</p>

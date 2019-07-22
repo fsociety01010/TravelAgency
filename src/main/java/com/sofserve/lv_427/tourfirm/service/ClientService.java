@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ClientService {
   List<Client> getClientList() throws SQLException;
+
+  Client getClient(int id) throws SQLException, ClassNotFoundException;
 }

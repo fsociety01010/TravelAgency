@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class FindCityServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/static/find_city.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/static/find/find_city.jsp").forward(request, response);
     }
 
     @Override
@@ -33,6 +33,6 @@ public class FindCityServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        req.getRequestDispatcher("WEB-INF/static/find_hotel.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/static/find/find_hotel.jsp").forward(req, resp);
     }
 }

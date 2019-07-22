@@ -14,10 +14,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/find")
-public class Find extends HttpServlet {
+public class FindServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.getRequestDispatcher("WEB-INF/static/find.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/static/find/find.jsp").forward(request, response);
   }
 
   @Override
@@ -43,6 +43,6 @@ public class Find extends HttpServlet {
     }
 
     //    req.setAttribute("clientBack", client);
-    req.getRequestDispatcher("WEB-INF/static/find_country.jsp").forward(req, resp);
+    req.getRequestDispatcher("WEB-INF/static/find/find_country.jsp").forward(req, resp);
   }
 }

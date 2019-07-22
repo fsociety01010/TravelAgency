@@ -17,7 +17,7 @@
     <title>Міста</title>
 </head>
 <body>
-<jsp:include page="_header.jsp"/>
+<jsp:include page="../modules/_header.jsp"/>
 <div style="padding-left: 15px">
     <h2>Міста</h2>
     <form action="/city" method="post">

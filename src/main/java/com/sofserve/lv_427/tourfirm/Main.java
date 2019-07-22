@@ -1,9 +1,7 @@
 package com.sofserve.lv_427.tourfirm;
 
-import com.sofserve.lv_427.tourfirm.model.City;
-import com.sofserve.lv_427.tourfirm.model.Country;
-import com.sofserve.lv_427.tourfirm.model.Hotel;
-import com.sofserve.lv_427.tourfirm.model.Room;
+import com.sofserve.lv_427.tourfirm.model.*;
+import com.sofserve.lv_427.tourfirm.service.ClientService;
 import com.sofserve.lv_427.tourfirm.service.CountryService;
 import com.sofserve.lv_427.tourfirm.service.VisaService;
 import com.sofserve.lv_427.tourfirm.service.impl.*;
@@ -79,5 +77,8 @@ public class Main {
 //      System.out.println("видано в " + country.getCountryName());
 //    }
 
+//    ClientService clientService = new ClientServiceImpl();
+//    Client client = clientService.getClient(Integer.parseInt("2"));
+//    System.out.println(client);
   }
 }

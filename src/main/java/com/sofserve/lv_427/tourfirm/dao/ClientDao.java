@@ -67,4 +67,22 @@ public class ClientDao {
       throw new ClassNotFoundException("In DB no row with firstName " + firstName + "and lastName " + lastName);
     }
   }
+
+  public Client getClient(int id) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+            connection.prepareStatement("SELECT client.* FROM client WHERE id = ?");
+    preparedStatement.setInt(1, id);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    if (resultSet.next()) {
+      return new Client(
+              resultSet.getInt(ID),
+              resultSet.getString(FIRST_NAME),
+              resultSet.getString(LAST_NAME),
+              resultSet.getString(PHONE_NUMBER));
+    } else {
+      throw new ClassNotFoundException("In DB no row with id " + id);
+    }
+  }
 }

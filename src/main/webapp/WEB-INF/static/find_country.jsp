@@ -5,11 +5,7 @@
   Time: 9:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.sofserve.lv_427.tourfirm.model.Client" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Calendar" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.model.Country" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,7 +32,6 @@
             </option>
             <% } %>
         </select>
-
         <button type="submit">Знайти</button>
     </form>
 </div>

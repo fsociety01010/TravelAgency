@@ -35,7 +35,7 @@
         <input type="date" name="start_date"
                value=
                    <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>
-               min= <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>>
+                       min= <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>>
 
         <h3>Дата виїзду</h3>
         <input type="date" name="end_date"

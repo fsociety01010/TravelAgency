@@ -27,7 +27,6 @@
             в період <b><%=session.getAttribute("startDate")%></b>
             до <b><%=session.getAttribute("endDate")%></b>
 
-            <b><%=session.getAttribute("endDate").toString()%></b>
         </p>
         <select name="city">
             <%

@@ -1,4 +1,9 @@
-<%--
+<%@ page import="com.sofserve.lv_427.tourfirm.model.Country" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.VisaServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.CountryService" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.VisaService" %><%--
   Created by IntelliJ IDEA.
   User: Nazar
   Date: 20.07.2019
@@ -18,7 +23,23 @@
     <p>На ринку уже понад <b>10</b> років.</p>
     <p><b>16</b> задоволених клієнтів</p>
     <br>
-    <p>default_count віз видано в default_country</p>
+
+    <% CountryService countryService = new CountryServiceImpl();
+        VisaService visaService = new VisaServiceImpl();
+
+        List<Country> countries = countryService.getCountryList();
+        for (Country country : countries) {
+    %>
+    <p>
+        <%=visaService.getCountVisaForCountry(countryService.getCountryIdByName(country.getCountryName()))
+        %>
+        візи видано в
+        <%=country.getCountryName()%>
+    </p>
+    <%
+        }
+    %>
+
 </div>
 </body>
 </html>

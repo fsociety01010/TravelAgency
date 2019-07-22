@@ -1,5 +1,7 @@
 package com.sofserve.lv_427.tourfirm.dao;
 
+import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +14,10 @@ public class VisaDao {
   private static final String VISA_NAME = "visa_name";
   private static final String COUNTRY_ID = "country_id";
   private static final String CLIENT_ID = "client_id";
+
+  public VisaDao(Connection connection) {
+    this.connection = connection;
+  }
 
   /**
    * Method that find and return id of visa.

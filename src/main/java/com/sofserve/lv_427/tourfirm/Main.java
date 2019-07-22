@@ -1,12 +1,12 @@
 package com.sofserve.lv_427.tourfirm;
 
 import com.sofserve.lv_427.tourfirm.model.City;
+import com.sofserve.lv_427.tourfirm.model.Country;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 import com.sofserve.lv_427.tourfirm.model.Room;
-import com.sofserve.lv_427.tourfirm.service.impl.CityServiceImpl;
-import com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl;
-import com.sofserve.lv_427.tourfirm.service.impl.RoomServiceImpl;
-import com.sofserve.lv_427.tourfirm.service.impl.VisaServiceImpl;
+import com.sofserve.lv_427.tourfirm.service.CountryService;
+import com.sofserve.lv_427.tourfirm.service.VisaService;
+import com.sofserve.lv_427.tourfirm.service.impl.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -68,6 +68,16 @@ public class Main {
 //        for(Room room : rooms) {
 //            System.out.println(room.getRoomNumber());
 //        }
+
+//
+//    VisaService visaService = new VisaServiceImpl();
+//    CountryService countryService = new CountryServiceImpl();
+//
+//    List<Country> countries = countryService.getCountryList();
+//    for (Country country : countries) {
+//      System.out.print(visaService.getCountVisaForCountry(countryService.getCountryIdByName(country.getCountryName())) + " ");
+//      System.out.println("видано в " + country.getCountryName());
+//    }
 
   }
 }

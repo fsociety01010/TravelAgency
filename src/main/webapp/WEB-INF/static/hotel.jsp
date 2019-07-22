@@ -88,6 +88,17 @@
 
     <p>
         Завантаженість кімнат:
+            <%
+            for (int i = 0; i < roomService.getRoomCount(Integer.parseInt(session.getAttribute("hotelId").toString())); i++) {
+                int[] roomsLoading = roomService.LoadingRoomsPeriod(
+                        session.getAttribute("start_date_hotel_stat").toString(),
+                        session.getAttribute("end_date_hotel_stat").toString(),
+                        i+1);
+        %>
+    <p><%=i + 1%> кімната: <%=roomsLoading[0]%> / <%=roomsLoading[1]%></p>
+    <%
+        }
+    %>
     </p>
 
     <%}%>

@@ -172,5 +172,13 @@ public class Main {
 //            session.getAttribute("end_date_hotel_stat").toString()
 //    )
 
+    RoomService roomService = new RoomServiceImpl();
+
+    roomService.getRoomCount(1);
+
+//    int[] roomsLoading = roomService.LoadingRoomsPeriod("2019-01-01", "2019-06-20", 2);
+//
+//    System.out.println(roomsLoading[0]);
+//    System.out.println(roomsLoading[1]);
   }
 }

@@ -60,5 +60,8 @@ public class HotelServiceImpl implements HotelService {
     return dao.getAvailableHotelsOnDates(startDate, endDate);
   }
 
-
+  @Override
+  public int getHotelIdByName(String name) throws SQLException, ClassNotFoundException {
+    return dao.getId(name);
+  }
 }

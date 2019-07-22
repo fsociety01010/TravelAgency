@@ -57,12 +57,15 @@ public class HotelDao {
         connection.prepareStatement(
             "SELECT DISTINCT hotel.* from hotel "
                 + "WHERE hotel.id IN "
-                + "(Select room.hotel_id FROM room WHERE room.id NOT IN "
+                + "(SELECT room.hotel_id FROM room WHERE room.id NOT IN "
                 + "(SELECT room_book.room_id FROM room_book "
-                + "WHERE order_start > ? AND (order_end > ? OR order_end > ?)));");
+                + "WHERE ((order_start > ? AND order_start < ?) OR (order_start < ? AND order_end > ?) OR (order_end > ? AND order_end < ?))))");
     preparedStatement.setString(1, startDate);
     preparedStatement.setString(2, endDate);
-    preparedStatement.setString(3, endDate);
+    preparedStatement.setString(3, startDate);
+    preparedStatement.setString(4, endDate);
+    preparedStatement.setString(5, startDate);
+    preparedStatement.setString(6, endDate);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -73,5 +76,26 @@ public class HotelDao {
               resultSet.getInt(ID), resultSet.getString(HOTEL_NAME), resultSet.getInt(CITY_ID)));
     }
     return hotels;
+  }
+
+  /**
+   * Method that find and return id of hotel.
+   *
+   * @param name - hotel name
+   * @return id of hotel
+   * @exception SQLException - error in sql query.
+   */
+  public int getId(String name) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("select id from hotel where " + HOTEL_NAME + " = ?");
+    preparedStatement.setString(1, name);
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    if (resultSet.next()) {
+      return resultSet.getInt("id");
+    } else {
+      throw new ClassNotFoundException("In DB no row with name " + name);
+    }
   }
 }

@@ -49,6 +49,25 @@ public class Main {
     //        for(Room room : rooms) {
     //            System.out.println(room.getRoomNumber());
     //        }
+//        HotelServiceImpl service = new HotelServiceImpl();
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-08-20";
+//
+//        List<Hotel> hotels = service.getAvailableHotelsInCity(4, startDate, endDate);
+//
+//        for(Hotel hotel : hotels) {
+//            System.out.println(hotel.getHotelName());
+//        }
+
+//        RoomServiceImpl service = new RoomServiceImpl();
+//        String startDate = "2019-07-12";
+//        String endDate = "2019-08-20";
+//
+//        List<Room> rooms = service.getAvailableRoomsByHotel(startDate, endDate, 7);//should return empty list
+//
+//        for(Room room : rooms) {
+//            System.out.println(room.getRoomNumber());
+//        }
 
   }
 }

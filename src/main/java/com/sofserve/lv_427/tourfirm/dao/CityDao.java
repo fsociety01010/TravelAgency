@@ -72,13 +72,14 @@ public class CityDao {
    * @return list of cities.
    * @exception SQLException - error in sql query.
    */
-  public List<City> getCityWhereAvailableHotels(Set<Integer> listOfCityId) throws SQLException {
+  public List<City> getCityWhereAvailableHotels(Set<Integer> listOfCityId, int countryId) throws SQLException {
     List<City> cities = new ArrayList<>();
 
     for (int cityId : listOfCityId) {
       PreparedStatement preparedStatement =
-          connection.prepareStatement("SELECT City.* FROM City WHERE city.id = ?");
+          connection.prepareStatement("SELECT City.* FROM City WHERE city.id = ? AND country_id = ?");
       preparedStatement.setInt(1, cityId);
+      preparedStatement.setInt(2, countryId);
       ResultSet resultSet = preparedStatement.executeQuery();
 
       if (resultSet.next()) {

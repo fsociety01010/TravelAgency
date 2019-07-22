@@ -44,8 +44,6 @@
 
         <br>
         <button type="submit">Знайти</button>
-
-        <%= session.getAttribute("clientId") %>
     </form>
 </div>
 </body>

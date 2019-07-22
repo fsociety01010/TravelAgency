@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/find")
-public class FindHotel extends HttpServlet {
+public class Find extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.getRequestDispatcher("WEB-INF/static/findHotel.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/static/find.jsp").forward(request, response);
   }
 
   @Override
@@ -34,13 +35,14 @@ public class FindHotel extends HttpServlet {
       session.setAttribute(
           "clientId",
           new ClientServiceImpl().getClientId(clientSplitToArray[0], clientSplitToArray[1]));
+      session.setAttribute("client", client);
       session.setAttribute("startDate", startDate);
       session.setAttribute("endDate", endDate);
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
     }
 
-    req.setAttribute("clientBack", client);
-    req.getRequestDispatcher("WEB-INF/static/findHotel.jsp").forward(req, resp);
+    //    req.setAttribute("clientBack", client);
+    req.getRequestDispatcher("WEB-INF/static/find_country.jsp").forward(req, resp);
   }
 }

@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Visa {
-  private int id;
-  private String visaName;
-  private int countryId;
-  private int clientId;
+public class RoomBook {
+	private int id;
+	private String orderStart;
+	private String orderEnd;
+	private int roomId;
+	private int clientId;
+	
 }

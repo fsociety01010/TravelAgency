@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CountryServiceImpl implements CountryService {
-  private CountryDao countryDao;
+  private CountryDao dao;
 
   public CountryServiceImpl() throws SQLException, ClassNotFoundException {
-    countryDao = new CountryDao(JdbcConnector.getConnection());
+    dao = new CountryDao(JdbcConnector.getConnection());
   }
 
   /**
@@ -23,19 +23,23 @@ public class CountryServiceImpl implements CountryService {
    */
   @Override
   public List<Country> getCountryList() throws SQLException {
-    return countryDao.findAll();
+    return dao.findAll();
   }
 
   /**
    * Method that find country by id.
    *
-   * @param id - country ID
    * @return Country.
    * @exception SQLException - error in sql query.
    */
   @Override
   public Country findById(int id) throws SQLException, ClassNotFoundException {
-    return countryDao.findById(id);
+    return dao.findById(id);
+  }
+
+  @Override
+  public int getCountryIdByName(String name) throws SQLException, ClassNotFoundException {
+    return dao.getId(name);
   }
 
   /**
@@ -47,6 +51,6 @@ public class CountryServiceImpl implements CountryService {
    */
   @Override
   public List<Country> getVisitedCountriesByClient(int clientId) throws SQLException {
-    return countryDao.getVisitedCountriesByClient(clientId);
+    return dao.getVisitedCountriesByClient(clientId);
   }
 }

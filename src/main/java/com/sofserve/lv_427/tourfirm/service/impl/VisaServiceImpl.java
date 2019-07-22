@@ -10,23 +10,23 @@ import com.sofserve.lv_427.tourfirm.service.VisaService;
 import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
 
 public class VisaServiceImpl implements VisaService {
-	VisaDao dao;
+  VisaDao dao;
 
-	public VisaServiceImpl() throws SQLException, ClassNotFoundException {
-		this.dao = new VisaDao(JdbcConnector.getConnection());
-	}
+  public VisaServiceImpl() throws SQLException, ClassNotFoundException {
+    this.dao = new VisaDao(JdbcConnector.getConnection());
+  }
 
-	/**
-	 * Method count client visas
-	 *
-	 * @param clientId - client ID
-	 * @return number of clients visas
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public int getVisasCountForTheClient(int clientId) throws SQLException {
-		return dao.getVisasCountForTheClient(clientId);
-	}
+  /**
+   * Method count client visas
+   *
+   * @param clientId - client ID
+   * @return number of clients visas
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public int getVisasCountForTheClient(int clientId) throws SQLException {
+    return dao.getVisasCountForTheClient(clientId);
+  }
 
   /**
    * Method that find and return all client visas in DB.
@@ -37,7 +37,21 @@ public class VisaServiceImpl implements VisaService {
    */
   @Override
   public List<Visa> getVisasForTheClient(int clientId) throws SQLException {
-		return dao.getVisasForTheClient(clientId);
-	}
+    return dao.getVisasForTheClient(clientId);
+  }
 
+  @Override
+  public int getVisaIdByName(String name) throws SQLException, ClassNotFoundException {
+    return dao.getId(name);
+  }
+
+  /**
+   * @param countryId - id number of the country in a table
+   * @return Count of visa for country
+   * @throws SQLException
+   */
+  @Override
+  public int getCountVisaForCountry(int countryId) throws SQLException {
+    return dao.CountVisaForCountry(countryId);
+  }
 }

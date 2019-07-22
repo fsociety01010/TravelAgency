@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebListener;
 import java.sql.SQLException;
 
 @WebListener
-public class InitializeListener implements ServletContextListener {
+public class InitializeListenerServlet implements ServletContextListener {
   @Override
   public final void contextInitialized(final ServletContextEvent sce) {
     try {

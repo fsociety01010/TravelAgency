@@ -52,7 +52,7 @@ public class CityServiceImpl implements CityService {
    * @exception SQLException - error in sql query.
    */
   @Override
-  public List<City> getCityWithAvailableHotels(String startDate, String endDate)
+  public List<City> getCityWithAvailableHotels(String startDate, String endDate, int countryId)
       throws SQLException {
     List<City> availableCities;
     List<Hotel> availableHotels = hotelService.getAvailableHotelsOnDate(startDate, endDate);
@@ -62,7 +62,13 @@ public class CityServiceImpl implements CityService {
       idOfAvailableCities.add(hotel.getCityId());
     }
 
-    availableCities = dao.getCityWhereAvailableHotels(idOfAvailableCities);
+    availableCities = dao.getCityWhereAvailableHotels(idOfAvailableCities, countryId);
+
     return availableCities;
+  }
+
+  @Override
+  public int getCityIdByName(String name) throws SQLException, ClassNotFoundException {
+    return dao.getId(name);
   }
 }

@@ -2,15 +2,12 @@ package com.sofserve.lv_427.tourfirm.service.impl;
 
 import com.sofserve.lv_427.tourfirm.dao.ClientDao;
 import com.sofserve.lv_427.tourfirm.model.Client;
-import com.sofserve.lv_427.tourfirm.model.Country;
-import com.sofserve.lv_427.tourfirm.model.Visa;
 import com.sofserve.lv_427.tourfirm.service.ClientService;
 import com.sofserve.lv_427.tourfirm.service.CountryService;
 import com.sofserve.lv_427.tourfirm.service.VisaService;
 import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientServiceImpl implements ClientService {
@@ -35,12 +32,6 @@ public class ClientServiceImpl implements ClientService {
     return dao.findAll();
   }
 
-  // @Override
-  // public List<Country> getVisitedCountries() throws SQLException {
-  //
-  //	return null;
-  // }
-
   /**
    * Method that find all countries in which client has visa.
    *
@@ -58,4 +49,13 @@ public class ClientServiceImpl implements ClientService {
   //
   //    return countries;
   //  }
+
+  public int getClientId(String firstName, String lastName)
+      throws SQLException, ClassNotFoundException {
+    return dao.getClientId(firstName, lastName);
+  }
+
+  public Client getClient(int id) throws SQLException, ClassNotFoundException {
+    return dao.getClient(id);
+  }
 }

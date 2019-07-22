@@ -34,7 +34,7 @@ public class RoomBookDao {
             "INSERT INTO room_book_archive "
                 + "(order_start, order_end, room_id, client_id)"
                 + "SELECT order_start, order_end, room_id, client_id"
-                + " FROM roFom_book WHERE order_end < ?;");
+                + " FROM room_book WHERE order_end < ?;");
     preparedStatement1.setString(1, date);
 
     PreparedStatement preparedStatement2 =

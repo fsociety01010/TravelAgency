@@ -10,5 +10,8 @@ public interface CityService {
 
   List<City> citiesByCountry(int id) throws SQLException;
 
-  List<City> getCityWithAvailableHotels(String startDate, String endDate) throws SQLException;
+  List<City> getCityWithAvailableHotels(String startDate, String endDate, int countryId)
+      throws SQLException;
+
+  int getCityIdByName(String name) throws SQLException, ClassNotFoundException;
 }

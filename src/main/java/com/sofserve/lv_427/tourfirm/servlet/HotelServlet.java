@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/about")
-public class About extends HttpServlet {
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) {}
-
+@WebServlet("/hotel1")
+public class HotelServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws IOException, ServletException {
-      request.getRequestDispatcher("WEB-INF/static/about.jsp").forward(request, response);
+      throws ServletException, IOException {
+    request.getRequestDispatcher("WEB-INF/static/hotel1.jsp").forward(request, response);
   }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {}
 }

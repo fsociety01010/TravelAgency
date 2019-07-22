@@ -63,6 +63,24 @@ public class CountryDao {
   }
 
   /**
+   * Method that find and return id of country.
+   *
+   * @param name - country name
+   * @return id of country
+   * @exception SQLException - error in sql query.
+   */
+  public int getId(String name) throws SQLException, ClassNotFoundException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("select id from country where " + COUNTRY_NAME + " = ?");
+    preparedStatement.setString(1, name);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+      return resultSet.getInt("id");
+    } else {
+      throw new ClassNotFoundException("In DB no row with name " + name);
+    }
+  }
+  /**
    * Method that find and return all Visited Countries by Client from DB.
    *
    * @param clientId - Client ID

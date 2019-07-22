@@ -20,13 +20,36 @@ public class RoomServiceImpl implements RoomService {
    *
    * @param startDate - start booking
    * @param endDate - end booking
-   * @param hotelId - hotel ID
-   * @return list of rooms.
+   * @return list of hotels.
    * @exception SQLException - error in sql query.
    */
   @Override
-  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
+  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int roomId)
       throws SQLException {
-    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
+    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, roomId);
+  }
+
+  @Override
+  public int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException {
+    return dao.getId(number);
+  }
+
+  /**
+   * Method that find a loading of room.
+   *
+   * @param startDate - start of period
+   * @param endDate - end of period
+   * @param roomId - room ID
+   * @return loading[0] - return number of booked day for certain period.
+   * @return loading[1] - return a number of days of search range.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public int[] LoadingRoomsPeriod(String startDate, String endDate, int roomId)
+      throws SQLException {
+    int[] loading = new int[2];
+    loading[0] = dao.getLoadingRoomsPeriod(startDate, endDate, roomId);
+    loading[1] = dao.getLoadingPeriod(startDate, endDate);
+    return loading;
   }
 }

@@ -6,14 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) {}
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws IOException, ServletException {
-      request.getRequestDispatcher("/index.jsp").forward(request, response);
+      throws IOException, ServletException {
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 }

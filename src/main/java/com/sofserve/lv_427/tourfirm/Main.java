@@ -26,6 +26,9 @@ public class Main {
     //    VisaServiceImpl hotel = new VisaServiceImpl();
     //    System.out.println(hotel.getCountVisaForCountry(1));
 
+    //    RoomServiceImpl roomService = new RoomServiceImpl();
+    //    System.out.println(roomService.LoadingRoomsPeriode("2019-01-01","2019-03-30",2));
+
     //        HotelServiceImpl service = new HotelServiceImpl();
     //        String startDate = "2019-07-12";
     //        String endDate = "2019-07-20";

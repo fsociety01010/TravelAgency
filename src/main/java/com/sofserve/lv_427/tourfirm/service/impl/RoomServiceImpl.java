@@ -25,9 +25,9 @@ public class RoomServiceImpl implements RoomService {
    * @exception SQLException - error in sql query.
    */
   @Override
-  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
+  public List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int roomId)
       throws SQLException {
-    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, hotelId);
+    return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, roomId);
   }
 
   /**

@@ -24,8 +24,10 @@ public class Main {
     //    VisaServiceImpl hotel = new VisaServiceImpl();
     //    System.out.println(hotel.getCountVisaForCountry(1));
 
-    //    RoomServiceImpl roomService = new RoomServiceImpl();
-    //    System.out.println(roomService.LoadingRoomsPeriode("2019-01-01","2019-03-30",2));
+//    RoomServiceImpl roomService = new RoomServiceImpl();
+//    int[] load = new int[2];
+//    load = roomService.LoadingRoomsPeriod("2019-01-01", "2019-03-30", 4);
+//    for (int ar : load) System.out.println(ar);
 
     //        HotelServiceImpl service = new HotelServiceImpl();
     //        String startDate = "2019-07-12";
@@ -47,25 +49,26 @@ public class Main {
     //        for(Room room : rooms) {
     //            System.out.println(room.getRoomNumber());
     //        }
-//        HotelServiceImpl service = new HotelServiceImpl();
-//        String startDate = "2019-07-12";
-//        String endDate = "2019-08-20";
-//
-//        List<Hotel> hotels = service.getAvailableHotelsInCity(4, startDate, endDate);
-//
-//        for(Hotel hotel : hotels) {
-//            System.out.println(hotel.getHotelName());
-//        }
+    //        HotelServiceImpl service = new HotelServiceImpl();
+    //        String startDate = "2019-07-12";
+    //        String endDate = "2019-08-20";
+    //
+    //        List<Hotel> hotels = service.getAvailableHotelsInCity(4, startDate, endDate);
+    //
+    //        for(Hotel hotel : hotels) {
+    //            System.out.println(hotel.getHotelName());
+    //        }
 
-//        RoomServiceImpl service = new RoomServiceImpl();
-//        String startDate = "2019-07-12";
-//        String endDate = "2019-08-20";
-//
-//        List<Room> rooms = service.getAvailableRoomsByHotel(startDate, endDate, 7);//should return empty list
-//
-//        for(Room room : rooms) {
-//            System.out.println(room.getRoomNumber());
-//        }
+    //        RoomServiceImpl service = new RoomServiceImpl();
+    //        String startDate = "2019-07-12";
+    //        String endDate = "2019-08-20";
+    //
+    //        List<Room> rooms = service.getAvailableRoomsByHotel(startDate, endDate, 7);//should
+    // return empty list
+    //
+    //        for(Room room : rooms) {
+    //            System.out.println(room.getRoomNumber());
+    //        }
 
 //
 //    VisaService visaService = new VisaServiceImpl();

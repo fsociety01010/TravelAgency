@@ -87,7 +87,7 @@ public class RoomDao {
    * @return loading of rooms
    * @exception SQLException - error in sql query.
    */
-  public int getLoadingRoomsPeriode(String startDate, String endDate, int roomId)
+  public int getLoadingRoomsPeriod(String startDate, String endDate, int roomId)
       throws SQLException {
     int loading = 0;
     PreparedStatement preparedStatement =
@@ -107,4 +107,31 @@ public class RoomDao {
     }
     return loading;
   }
+
+  /**
+   * Method that shows a period of room`s loading in certain period.
+   *
+   * @param startDate - start booking
+   * @param endDate - end booking
+   * @return  return a number of days of search range.
+   * @exception SQLException - error in sql query.
+   */
+  public int getLoadingPeriod(String startDate, String endDate)
+          throws SQLException {
+    int periode = 0;
+    PreparedStatement preparedStatement =
+            connection.prepareStatement(
+                    "select timestampdiff(day, ?, ?) AS periode");
+    preparedStatement.setString(1, startDate);
+    preparedStatement.setString(2, endDate);
+
+
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+    while (resultSet.next()) {
+      periode = resultSet.getInt("periode");
+    }
+    return periode;
+  }
 }
+

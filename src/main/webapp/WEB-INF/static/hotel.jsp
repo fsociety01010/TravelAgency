@@ -98,6 +98,8 @@
     <p><%=i + 1%> кімната: <%=roomsLoading[0]%> / <%=roomsLoading[1]%></p>
     <%
         }
+        session.setAttribute("start_date_hotel_stat", null);
+        session.setAttribute("end_date_hotel_stat", null);
     %>
     </p>
 

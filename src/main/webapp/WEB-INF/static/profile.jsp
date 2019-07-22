@@ -63,6 +63,7 @@
     <p>Візи:
         <%
             List<Visa> visas = visaService.getVisasForTheClient(Integer.parseInt(session.getAttribute("profileId").toString()));
+            session.setAttribute("profileId", null);
             for (Visa visa : visas) {
         %>
         <%=visa.getVisaName()%>
@@ -72,10 +73,6 @@
 
     <%
         }%>
-
-
-    <%--<h3>Відкриті візи default_list_of_client_visas</h3>--%>
-    <%--<h3>Подорожував у default_list_of_visited_countries</h3>--%>
 </div>
 </body>
 </html>

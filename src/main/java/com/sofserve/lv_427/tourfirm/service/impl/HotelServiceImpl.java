@@ -1,13 +1,11 @@
 package com.sofserve.lv_427.tourfirm.service.impl;
 
-import com.sofserve.lv_427.tourfirm.dao.CityDao;
 import com.sofserve.lv_427.tourfirm.dao.HotelDao;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 import com.sofserve.lv_427.tourfirm.service.HotelService;
 import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class HotelServiceImpl implements HotelService {
   }
 
   @Override
-  public List<Hotel> getHotelsByCity(int cityId) throws SQLException{
+  public List<Hotel> getHotelsByCity(int cityId) throws SQLException {
     return dao.getHotelsByCity(cityId);
   }
 
@@ -66,29 +64,31 @@ public class HotelServiceImpl implements HotelService {
     return dao.getId(name);
   }
 
-	/**
-	 * Method that count number of clients during period.
-	 *
-	 * @param dateStart - first day of period
-	 * @param dateEnd   - last day of period
-	 * @return number of clients during the period
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public int getClientCountForPeriod(int hotel_id, String dateStart, String dateEnd) throws SQLException {
-		return dao.getClientCountForPeriod(hotel_id, dateStart, dateEnd);
-	}
+  /**
+   * Method that count number of clients during period.
+   *
+   * @param dateStart - first day of period
+   * @param dateEnd - last day of period
+   * @return number of clients during the period
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public int getClientCountForPeriod(int hotel_id, String dateStart, String dateEnd)
+      throws SQLException {
+    return dao.getClientCountForPeriod(hotel_id, dateStart, dateEnd);
+  }
 
-	/**
-	 * Method that count average book time for hotel during the period
-	 *
-	 * @param dateStart - first day of period
-	 * @param dateEnd   - last day of period
-	 * @return average time in days
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public int getAverageBookTime(int hotel_id, String dateStart, String dateEnd) throws SQLException {
-		return dao.getAverageBookTime(hotel_id, dateStart, dateEnd);
-	}
+  /**
+   * Method that count average book time for hotel during the period
+   *
+   * @param dateStart - first day of period
+   * @param dateEnd - last day of period
+   * @return average time in days
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public int getAverageBookTime(int hotel_id, String dateStart, String dateEnd)
+      throws SQLException {
+    return dao.getAverageBookTime(hotel_id, dateStart, dateEnd);
+  }
 }

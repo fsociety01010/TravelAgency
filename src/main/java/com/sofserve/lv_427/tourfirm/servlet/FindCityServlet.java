@@ -1,7 +1,6 @@
 package com.sofserve.lv_427.tourfirm.servlet;
 
 import com.sofserve.lv_427.tourfirm.service.impl.CityServiceImpl;
-import com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,25 +13,25 @@ import java.sql.SQLException;
 
 @WebServlet("/city")
 public class FindCityServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/static/find/find_city.jsp").forward(request, response);
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    request.getRequestDispatcher("WEB-INF/static/find/find_city.jsp").forward(request, response);
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+
+    String city = req.getParameter("city");
+
+    try {
+      session.setAttribute("city", city);
+      session.setAttribute("cityId", new CityServiceImpl().getCityIdByName(city));
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        HttpSession session = req.getSession();
-
-        String city = req.getParameter("city");
-
-        try {
-            session.setAttribute("city", city);
-            session.setAttribute("cityId", new CityServiceImpl().getCityIdByName(city));
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        req.getRequestDispatcher("WEB-INF/static/find/find_hotel.jsp").forward(req, resp);
-    }
+    req.getRequestDispatcher("WEB-INF/static/find/find_hotel.jsp").forward(req, resp);
+  }
 }

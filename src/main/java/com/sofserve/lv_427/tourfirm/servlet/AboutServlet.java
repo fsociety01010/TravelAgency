@@ -12,7 +12,7 @@ public class AboutServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) {}
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws IOException, ServletException {
-      request.getRequestDispatcher("WEB-INF/static/about.jsp").forward(request, response);
+      throws IOException, ServletException {
+    request.getRequestDispatcher("WEB-INF/static/about.jsp").forward(request, response);
   }
 }

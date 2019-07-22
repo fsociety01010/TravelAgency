@@ -13,35 +13,35 @@ import java.util.List;
 import java.util.Set;
 
 public class CityServiceImpl implements CityService {
-	private CityDao dao;
-	private HotelService hotelService;
+  private CityDao dao;
+  private HotelService hotelService;
 
-	public CityServiceImpl() throws SQLException, ClassNotFoundException {
-		this.dao = new CityDao(JdbcConnector.getConnection());
-		hotelService = new HotelServiceImpl();
-	}
+  public CityServiceImpl() throws SQLException, ClassNotFoundException {
+    this.dao = new CityDao(JdbcConnector.getConnection());
+    hotelService = new HotelServiceImpl();
+  }
 
-	/**
-	 * Method that find all Cities.
-	 *
-	 * @return list of Cities.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<City> getCityList() throws SQLException {
-		return dao.findAll();
-	}
+  /**
+   * Method that find all Cities.
+   *
+   * @return list of Cities.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<City> getCityList() throws SQLException {
+    return dao.findAll();
+  }
 
-	/**
-	 * Method that find all Cities by country ID.
-	 *
-	 * @return list of Cities.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<City> citiesByCountry(int id) throws SQLException {
-		return dao.findAllByCountryID(id);
-	}
+  /**
+   * Method that find all Cities by country ID.
+   *
+   * @return list of Cities.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<City> citiesByCountry(int id) throws SQLException {
+    return dao.findAllByCountryID(id);
+  }
 
   /**
    * Method that find all Cities with available hotels.

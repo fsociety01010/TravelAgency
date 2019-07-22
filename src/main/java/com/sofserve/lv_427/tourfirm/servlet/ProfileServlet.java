@@ -15,26 +15,26 @@ import java.sql.SQLException;
 public class ProfileServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      request.getRequestDispatcher("WEB-INF/static/profile.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/static/profile.jsp").forward(request, response);
   }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String client = req.getParameter("client");
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    String client = req.getParameter("client");
 
-        String[] clientSplitToArray = client.split(" ");
+    String[] clientSplitToArray = client.split(" ");
 
-        try {
-            session.setAttribute(
-                    "profileId",
-                    new ClientServiceImpl().getClientId(clientSplitToArray[0], clientSplitToArray[1]));
-            session.setAttribute("profile", client);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        req.getRequestDispatcher("WEB-INF/static/profile.jsp").forward(req, resp);
+    try {
+      session.setAttribute(
+          "profileId",
+          new ClientServiceImpl().getClientId(clientSplitToArray[0], clientSplitToArray[1]));
+      session.setAttribute("profile", client);
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
     }
+
+    req.getRequestDispatcher("WEB-INF/static/profile.jsp").forward(req, resp);
+  }
 }

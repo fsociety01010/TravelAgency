@@ -48,8 +48,8 @@ public class RoomServiceImpl implements RoomService {
   public int[] LoadingRoomsPeriod(String startDate, String endDate, int roomId)
       throws SQLException {
     int[] loading = new int[2];
-     loading[0] = dao.getLoadingRoomsPeriod(startDate, endDate, roomId);
-     loading[1] = dao.getLoadingPeriod(startDate,endDate);
-     return loading;
+    loading[0] = dao.getLoadingRoomsPeriod(startDate, endDate, roomId);
+    loading[1] = dao.getLoadingPeriod(startDate, endDate);
+    return loading;
   }
 }

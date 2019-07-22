@@ -20,7 +20,8 @@
     <h2>Країни</h2>
     <form action="/country" method="post">
         <p style="font-size: 8px; color: red;">
-            *Доступні країни для <b><%=session.getAttribute("client")%></b>
+            *Доступні країни для <b><%=session.getAttribute("client")%>
+        </b>
         </p>
 
         <select name="country">

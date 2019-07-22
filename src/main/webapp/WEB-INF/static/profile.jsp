@@ -41,7 +41,8 @@
     <% } else {
         Client client = clientService.getClient(Integer.parseInt(session.getAttribute("profileId").toString()));
 
-    %> <h3><%=client.getFirstName() + " " + client.getLastName()%></h3>
+    %> <h3><%=client.getFirstName() + " " + client.getLastName()%>
+</h3>
     number: <%=client.getPhoneNumber()%>
     <p>Відвідав: </p>
     <p>Візи: </p>

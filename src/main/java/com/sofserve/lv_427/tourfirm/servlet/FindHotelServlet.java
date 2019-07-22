@@ -13,25 +13,25 @@ import java.sql.SQLException;
 
 @WebServlet("/hotel")
 public class FindHotelServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/static/find_hotel.jsp").forward(request, response);
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    request.getRequestDispatcher("WEB-INF/static/find_hotel.jsp").forward(request, response);
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+
+    String hotel = req.getParameter("hotel");
+
+    try {
+      session.setAttribute("hotel", hotel);
+      session.setAttribute("hotelId", new HotelServiceImpl().getHotelIdByName(hotel));
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        HttpSession session = req.getSession();
-
-        String hotel = req.getParameter("hotel");
-
-        try {
-            session.setAttribute("hotel", hotel);
-            session.setAttribute("hotelId", new HotelServiceImpl().getHotelIdByName(hotel));
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        req.getRequestDispatcher("WEB-INF/static/hotel.jsp").forward(req, resp);
-    }
+    req.getRequestDispatcher("WEB-INF/static/hotel.jsp").forward(req, resp);
+  }
 }

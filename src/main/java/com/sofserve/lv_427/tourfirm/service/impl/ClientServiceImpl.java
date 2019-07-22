@@ -21,16 +21,16 @@ public class ClientServiceImpl implements ClientService {
     countryService = new CountryServiceImpl();
   }
 
-	/**
-	 * Method that find all clients.
-	 *
-	 * @return list of clients.
-	 * @exception SQLException - error in sql query.
-	 */
-	@Override
-	public List<Client> getClientList() throws SQLException {
-		return dao.findAll();
-	}
+  /**
+   * Method that find all clients.
+   *
+   * @return list of clients.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Client> getClientList() throws SQLException {
+    return dao.findAll();
+  }
 
   /**
    * Method that find all countries in which client has visa.
@@ -50,7 +50,8 @@ public class ClientServiceImpl implements ClientService {
   //    return countries;
   //  }
 
-  public int getClientId(String firstName, String lastName) throws SQLException, ClassNotFoundException {
+  public int getClientId(String firstName, String lastName)
+      throws SQLException, ClassNotFoundException {
     return dao.getClientId(firstName, lastName);
   }
 

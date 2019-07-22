@@ -53,9 +53,11 @@ public class ClientDao {
    * @return list of cities.
    * @exception SQLException - error in sql query.
    */
-  public int getClientId(String firstName, String lastName) throws SQLException, ClassNotFoundException {
+  public int getClientId(String firstName, String lastName)
+      throws SQLException, ClassNotFoundException {
     PreparedStatement preparedStatement =
-            connection.prepareStatement("SELECT client.id FROM client WHERE first_name = ? AND last_name = ?");
+        connection.prepareStatement(
+            "SELECT client.id FROM client WHERE first_name = ? AND last_name = ?");
     preparedStatement.setString(1, firstName);
     preparedStatement.setString(2, lastName);
 
@@ -64,23 +66,24 @@ public class ClientDao {
     if (resultSet.next()) {
       return resultSet.getInt("id");
     } else {
-      throw new ClassNotFoundException("In DB no row with firstName " + firstName + "and lastName " + lastName);
+      throw new ClassNotFoundException(
+          "In DB no row with firstName " + firstName + "and lastName " + lastName);
     }
   }
 
   public Client getClient(int id) throws SQLException, ClassNotFoundException {
     PreparedStatement preparedStatement =
-            connection.prepareStatement("SELECT client.* FROM client WHERE id = ?");
+        connection.prepareStatement("SELECT client.* FROM client WHERE id = ?");
     preparedStatement.setInt(1, id);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 
     if (resultSet.next()) {
       return new Client(
-              resultSet.getInt(ID),
-              resultSet.getString(FIRST_NAME),
-              resultSet.getString(LAST_NAME),
-              resultSet.getString(PHONE_NUMBER));
+          resultSet.getInt(ID),
+          resultSet.getString(FIRST_NAME),
+          resultSet.getString(LAST_NAME),
+          resultSet.getString(PHONE_NUMBER));
     } else {
       throw new ClassNotFoundException("In DB no row with id " + id);
     }

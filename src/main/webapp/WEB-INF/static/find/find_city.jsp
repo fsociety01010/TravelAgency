@@ -22,10 +22,14 @@
     <h2>Міста</h2>
     <form action="/city" method="post">
         <p style="font-size: 8px; color: red;">
-            *Доступні міста для <b><%=session.getAttribute("client")%></b>
-            в <b><%=session.getAttribute("country")%></b>
-            в період <b><%=session.getAttribute("startDate")%></b>
-            до <b><%=session.getAttribute("endDate")%></b>
+            *Доступні міста для <b><%=session.getAttribute("client")%>
+        </b>
+            в <b><%=session.getAttribute("country")%>
+        </b>
+            в період <b><%=session.getAttribute("startDate")%>
+        </b>
+            до <b><%=session.getAttribute("endDate")%>
+        </b>
 
         </p>
         <select name="city">

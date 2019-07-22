@@ -20,13 +20,13 @@
     <form action="/country" method="post">
         <p style="font-size: 20px; padding-left: 20px;">Країна </p>
         <%--<select name="country">--%>
-            <%--<%--%>
-<%--//                List<Country> countries = new ClientServiceImpl().getAvailableCountry(session.getAttribute("clientId"));--%>
-<%----%>
-                <%--for (Country country : countries) { %>--%>
-            <%--<option><%=country.getCountryName()%>--%>
-            <%--</option>--%>
-            <%--<% } %>--%>
+        <%--<%--%>
+        <%--//                List<Country> countries = new ClientServiceImpl().getAvailableCountry(session.getAttribute("clientId"));--%>
+        <%----%>
+        <%--for (Country country : countries) { %>--%>
+        <%--<option><%=country.getCountryName()%>--%>
+        <%--</option>--%>
+        <%--<% } %>--%>
         </select>
         <button type="submit">Знайти</button>
     </form>

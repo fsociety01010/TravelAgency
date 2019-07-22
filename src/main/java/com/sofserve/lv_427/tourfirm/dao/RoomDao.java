@@ -90,6 +90,7 @@ public class RoomDao {
   public int getLoadingRoomsPeriod(String startDate, String endDate, int roomId)
       throws SQLException {
     int loading = 0;
+    int count = 0;
     PreparedStatement preparedStatement =
         connection.prepareStatement(
             "select datediff(order_end, order_start) from room_book_archive"
@@ -102,10 +103,13 @@ public class RoomDao {
     preparedStatement.setInt(5, roomId);
 
     ResultSet resultSet = preparedStatement.executeQuery();
+
     while (resultSet.next()) {
-      loading = resultSet.getInt("datediff(order_end, order_start)");
+      loading += resultSet.getInt("datediff(order_end, order_start)");
+      count++;
     }
-    return loading;
+
+    return loading/count;
   }
 
   /**

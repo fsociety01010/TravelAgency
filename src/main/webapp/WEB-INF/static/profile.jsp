@@ -43,6 +43,9 @@
 
     %> <h3><%=client.getFirstName() + " " + client.getLastName()%></h3>
     number: <%=client.getPhoneNumber()%>
+    <p>Відвідав: </p>
+    <p>Візи: </p>
+
     <%
         }%>
 

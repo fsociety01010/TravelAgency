@@ -1,8 +1,10 @@
 package com.sofserve.lv_427.tourfirm;
 
+import com.sofserve.lv_427.tourfirm.dao.RoomDao;
 import com.sofserve.lv_427.tourfirm.model.*;
 import com.sofserve.lv_427.tourfirm.service.ClientService;
 import com.sofserve.lv_427.tourfirm.service.CountryService;
+import com.sofserve.lv_427.tourfirm.service.RoomService;
 import com.sofserve.lv_427.tourfirm.service.VisaService;
 import com.sofserve.lv_427.tourfirm.service.impl.*;
 
@@ -83,5 +85,10 @@ public class Main {
 //    ClientService clientService = new ClientServiceImpl();
 //    Client client = clientService.getClient(Integer.parseInt("2"));
 //    System.out.println(client);
+
+    RoomService roomService = new RoomServiceImpl();
+    int[] result = roomService.LoadingRoomsPeriod("2019-01-01", "2019-03-30", 4);
+    System.out.println(result[0]);
+    System.out.println(result[1]);
   }
 }

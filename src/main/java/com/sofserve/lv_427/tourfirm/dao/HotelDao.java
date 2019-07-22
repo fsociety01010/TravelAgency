@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,5 +100,91 @@ public class HotelDao {
     } else {
       throw new ClassNotFoundException("In DB no row with name " + name);
     }
+  }
+
+  /**
+   * Method that count hotel clients for period from DB.
+   *
+   * @param hotel_id - hotel ID
+   * @param dateStart - first day of period
+   * @param dateEnd - last day of period
+   * @return number of clients for period.
+   * @exception SQLException - error in sql query.
+   */
+  public int getClientCountForPeriod(int hotel_id, String dateStart, String dateEnd)
+      throws SQLException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement(
+            "SELECT COUNT(client_id) FROM room_book WHERE "
+                + "(order_start >= ? AND order_end <= ? AND room_id IN "
+                + "(SELECT id FROM room where hotel_id = ?))");
+    preparedStatement.setString(1, dateStart);
+    preparedStatement.setString(2, dateEnd);
+    preparedStatement.setInt(3, hotel_id);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    resultSet.next();
+    return resultSet.getInt(1);
+  }
+
+  /**
+   * Method that count average book time for hotel for period from DB.
+   *
+   * @param hotel_id - hotel ID
+   * @param dateStart - first day of period
+   * @param dateEnd - last day of period
+   * @return average book time
+   * @exception SQLException - error in sql query.
+   */
+  public int getAverageBookTime(int hotel_id, String dateStart, String dateEnd)
+      throws SQLException {
+    List<Integer> bookDays = new ArrayList<>();
+    PreparedStatement preparedStatement =
+        connection.prepareStatement(
+            "SELECT order_start, order_end FROM room_book WHERE "
+                + "(order_start >= ? AND order_end <= ? AND room_id IN "
+                + "(SELECT id FROM room where hotel_id = ?))");
+    preparedStatement.setString(1, dateStart);
+    preparedStatement.setString(2, dateEnd);
+    preparedStatement.setInt(3, hotel_id);
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    while (resultSet.next()) {
+      bookDays.add(getDaysFromPeriod(resultSet.getString(1), resultSet.getString(2)));
+    }
+
+    return bookDays.size() > 0
+        ? bookDays.stream().mapToInt(Integer::intValue).sum() / bookDays.size()
+        : 0;
+  }
+
+  /**
+   * Method that count days in period.
+   *
+   * @param dateStart - first day of period
+   * @param dateEnd - last day of period
+   * @return number of days
+   * @exception SQLException - error in sql query.
+   */
+  private int getDaysFromPeriod(String dateStart, String dateEnd) {
+    int[] firstDay = get3Int(dateStart);
+    int[] lastDay = get3Int(dateEnd);
+    LocalDate start = LocalDate.of(firstDay[0], firstDay[1], firstDay[2]);
+    LocalDate end = LocalDate.of(lastDay[0], lastDay[1], lastDay[2]);
+    return (int) ChronoUnit.DAYS.between(start, end);
+  }
+
+  /**
+   * Method that get 3 numbers from string
+   *
+   * @param s - string
+   * @return 3 numbers
+   */
+  private int[] get3Int(String s) {
+    String[] s1 = s.split("-");
+    int[] n = new int[3];
+    for (int i = 0; i < 3; i++) {
+      n[i] = Integer.parseInt(s1[i]);
+    }
+    return n;
   }
 }

@@ -41,4 +41,16 @@ public class CountryServiceImpl implements CountryService {
   public int getCountryIdByName(String name) throws SQLException, ClassNotFoundException {
     return dao.getId(name);
   }
+
+  /**
+   * Method that find countries which had been visited by client during the period.
+   *
+   * @param clientId -client ID
+   * @return list of countries.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Country> getVisitedCountriesByClient(int clientId) throws SQLException {
+    return dao.getVisitedCountriesByClient(clientId);
+  }
 }

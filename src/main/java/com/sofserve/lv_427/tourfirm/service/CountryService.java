@@ -11,4 +11,6 @@ public interface CountryService {
   Country findById(int id) throws SQLException, ClassNotFoundException;
 
   int getCountryIdByName(String name) throws SQLException, ClassNotFoundException;
+
+  List<Country> getVisitedCountriesByClient(int clientId) throws SQLException;
 }

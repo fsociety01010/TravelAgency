@@ -9,7 +9,7 @@ public interface RoomService {
   List<Room> getAvailableRoomsByHotel(String startDate, String endDate, int hotelId)
       throws SQLException;
 
-
   int[] LoadingRoomsPeriod(String startDate, String endDate, int roomId) throws SQLException;
+
   int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException;
 }

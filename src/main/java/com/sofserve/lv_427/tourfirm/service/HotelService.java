@@ -3,6 +3,7 @@ package com.sofserve.lv_427.tourfirm.service;
 import com.sofserve.lv_427.tourfirm.model.Hotel;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 public interface HotelService {
@@ -14,4 +15,6 @@ public interface HotelService {
   List<Hotel> getHotelsByCity(int cityId) throws SQLException;
 
   int getHotelIdByName(String name) throws SQLException, ClassNotFoundException;
+
+  int getAverageBookTime(int hotel_id, String dateStart, String dateEnd) throws SQLException;
 }

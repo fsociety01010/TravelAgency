@@ -71,6 +71,14 @@ public class ClientDao {
     }
   }
 
+  /**
+   * Method that find Client by id.
+   *
+   * @param id - client id
+   * @return Client.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - error if record in DB not found.
+   */
   public Client getClient(int id) throws SQLException, ClassNotFoundException {
     PreparedStatement preparedStatement =
         connection.prepareStatement("SELECT client.* FROM client WHERE id = ?");

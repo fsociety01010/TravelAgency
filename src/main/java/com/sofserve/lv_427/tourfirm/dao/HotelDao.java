@@ -46,6 +46,26 @@ public class HotelDao {
   }
 
   /**
+   * Method that find all hotels.
+   *
+   * @return list of Hotel.
+   * @exception SQLException - error in sql query.
+   */
+  public List<Hotel> getAll() throws SQLException {
+    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from hotel");
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+    List<Hotel> hotels = new ArrayList<>();
+    while (resultSet.next()) {
+      hotels.add(
+          new Hotel(
+              resultSet.getInt(ID), resultSet.getString(HOTEL_NAME), resultSet.getInt(CITY_ID)));
+    }
+    return hotels;
+  }
+
+  /**
    * Method that find all available hotels in DB on dates.
    *
    * @param startDate - start booking
@@ -150,21 +170,21 @@ public class HotelDao {
     while (resultSet.next()) {
       bookDays.add(getDaysFromPeriod(resultSet.getString(1), resultSet.getString(2)));
     }
-    
-     preparedStatement =
-            connection.prepareStatement(
-                "SELECT order_start, order_end FROM room_book WHERE "
-                    + "(order_start >= ?  AND order_end <= ? AND room_id IN "
-                    + "(SELECT id FROM room where hotel_id = ?))");
-        preparedStatement.setString(1, dateStart);
-        preparedStatement.setString(2, dateEnd);
-        preparedStatement.setInt(3, hotel_id);
-         resultSet = preparedStatement.executeQuery();
 
-        while (resultSet.next()) {
-          bookDays.add(getDaysFromPeriod(resultSet.getString(1), resultSet.getString(2)));
-        }
-        
+    preparedStatement =
+        connection.prepareStatement(
+            "SELECT order_start, order_end FROM room_book WHERE "
+                + "(order_start >= ?  AND order_end <= ? AND room_id IN "
+                + "(SELECT id FROM room where hotel_id = ?))");
+    preparedStatement.setString(1, dateStart);
+    preparedStatement.setString(2, dateEnd);
+    preparedStatement.setInt(3, hotel_id);
+    resultSet = preparedStatement.executeQuery();
+
+    while (resultSet.next()) {
+      bookDays.add(getDaysFromPeriod(resultSet.getString(1), resultSet.getString(2)));
+    }
+
     return bookDays.size() > 0
         ? bookDays.stream().mapToInt(Integer::intValue).sum() / bookDays.size()
         : 0;

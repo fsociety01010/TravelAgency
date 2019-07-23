@@ -41,23 +41,40 @@ public class ClientServiceImpl implements ClientService {
    * @return list of countries.
    * @exception SQLException - error in sql query.
    */
-    public List<Country> getAvailableCountries(int clientId)
-   throws SQLException, ClassNotFoundException {
-      List<Country> countries = new ArrayList<>();
-      List<Visa> visas = visaService.getVisasForTheClient(clientId);
+  public List<Country> getAvailableCountries(int clientId)
+      throws SQLException, ClassNotFoundException {
+    List<Country> countries = new ArrayList<>();
+    List<Visa> visas = visaService.getVisasForTheClient(clientId);
 
-      for(Visa visa : visas) {
-        countries.add(countryService.findById(visa.getCountryId()));
-      }
-
-      return countries;
+    for (Visa visa : visas) {
+      countries.add(countryService.findById(visa.getCountryId()));
     }
 
+    return countries;
+  }
+
+  /**
+   * Method that find client id by his first and last name.
+   *
+   * @param firstName - first name
+   * @param lastName - last name
+   * @return client id.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - returns if client wasn't find.
+   */
   public int getClientId(String firstName, String lastName)
       throws SQLException, ClassNotFoundException {
     return dao.getClientId(firstName, lastName);
   }
 
+  /**
+   * Method that find client by his id.
+   *
+   * @param id - client id
+   * @return Client.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - returns if client wasn't find.
+   */
   public Client getClient(int id) throws SQLException, ClassNotFoundException {
     return dao.getClient(id);
   }

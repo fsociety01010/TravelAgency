@@ -18,4 +18,6 @@ public interface HotelService {
   int getAverageBookTime(int hotel_id, String dateStart, String dateEnd) throws SQLException;
 
   int getClientCountForPeriod(int hotel_id, String dateStart, String dateEnd) throws SQLException;
+
+  List<Hotel> getAllHotels() throws SQLException;
 }

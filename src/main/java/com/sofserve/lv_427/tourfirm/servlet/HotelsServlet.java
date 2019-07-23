@@ -1,6 +1,6 @@
 package com.sofserve.lv_427.tourfirm.servlet;
 
-import com.sofserve.lv_427.tourfirm.service.impl.CityServiceImpl;
+import com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,27 +11,26 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/city")
-public class FindCityServlet extends HttpServlet {
+@WebServlet("/hotels")
+public class HotelsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.getRequestDispatcher("WEB-INF/static/find/find_city.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/static/hotels.jsp").forward(request, response);
   }
 
-  @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    HttpSession session = req.getSession();
+    HttpSession session = request.getSession();
 
-    String city = req.getParameter("city");
+    String hotel = request.getParameter("hotel");
 
     try {
-      session.setAttribute("city", city);
-      session.setAttribute("cityId", new CityServiceImpl().getCityIdByName(city));
+      session.setAttribute("hotel", hotel);
+      session.setAttribute("hotelId", new HotelServiceImpl().getHotelIdByName(hotel));
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
     }
 
-    req.getRequestDispatcher("WEB-INF/static/find/find_hotel.jsp").forward(req, resp);
+    request.getRequestDispatcher("WEB-INF/static/hotel.jsp").forward(request, response);
   }
 }

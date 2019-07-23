@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.sofserve.lv_427.tourfirm.model.Country" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.model.City" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CityServiceImpl" %>
@@ -20,7 +19,7 @@
 <jsp:include page="../modules/_header.jsp"/>
 <div style="padding-left: 15px">
     <h2>Міста</h2>
-    <form action="/city" method="post">
+    <form action="/find_city" method="post">
         <p style="font-size: 8px; color: red;">
             *Доступні міста для <b><%=session.getAttribute("client")%>
         </b>

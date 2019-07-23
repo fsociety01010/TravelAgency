@@ -11,7 +11,7 @@ public interface RoomService {
 
   int[] LoadingRoomsPeriod(String startDate, String endDate, int roomId) throws SQLException;
 
-  int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException;
+  int getRoomIdByNumber(int number, int hotelId) throws SQLException, ClassNotFoundException;
 
   int getRoomCount(int hotelId) throws SQLException;
 }

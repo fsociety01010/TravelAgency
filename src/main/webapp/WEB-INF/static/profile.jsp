@@ -51,25 +51,27 @@
 
     %> <h3><%=client.getFirstName() + " " + client.getLastName()%>
 </h3>
-    number: <%=client.getPhoneNumber()%>
-    <p>Відвідав:
-        <%
-            List<Country> visitedCountries = countryService.getVisitedCountriesByClient(Integer.parseInt(session.getAttribute("profileId").toString()));
-            for (Country country : visitedCountries) {
-        %>
-        <%=country.getCountryName()%>
-        <%}%>
-    </p>
-    <p>Візи:
-        <%
-            List<Visa> visas = visaService.getVisasForTheClient(Integer.parseInt(session.getAttribute("profileId").toString()));
-            session.setAttribute("profileId", null);
-            for (Visa visa : visas) {
-        %>
-        <%=visa.getVisaName()%>
-        <%}%>
+    <ul>
+        <li>number: <%=client.getPhoneNumber()%></li>
+        <li>Відвідав:
+            <%
+                List<Country> visitedCountries = countryService.getVisitedCountriesByClient(Integer.parseInt(session.getAttribute("profileId").toString()));
+                for (Country country : visitedCountries) {
+            %>
+            <%=country.getCountryName()%>,
+            <%}%>
+        </li>
+        <li>Візи:
+            <%
+                List<Visa> visas = visaService.getVisasForTheClient(Integer.parseInt(session.getAttribute("profileId").toString()));
+                session.setAttribute("profileId", null);
+                for (Visa visa : visas) {
+            %>
+            <%=visa.getVisaName()%>,
+            <%}%>
 
-    </p>
+        </li>
+    </ul>
 
     <%
         }%>

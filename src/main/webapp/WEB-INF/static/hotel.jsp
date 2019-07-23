@@ -4,7 +4,11 @@
 <%@ page import="com.sofserve.lv_427.tourfirm.service.RoomService" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.impl.RoomServiceImpl" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.HotelService" %>
-<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl" %><%--
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.ClientService" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %><%--
   Created by IntelliJ IDEA.
   User: Nazar
   Date: 22.07.2019
@@ -27,6 +31,7 @@
 
     <% RoomService roomService = new RoomServiceImpl();
         HotelService hotelService = new HotelServiceImpl();
+        ClientService clientService = new ClientServiceImpl();
 
         List<Room> rooms = roomService.getAvailableRoomsByHotel(
                 session.getAttribute("startDate").toString(),
@@ -51,16 +56,54 @@
         <%=room.getRoomNumber()%>
         <% } %>
     </p>
+    <% if ((session.getAttribute("start_date_hotel_stat") == null) && (session.getAttribute("end_date_hotel_stat") == null)) { %>
+    <form action="/hotel1" method="post">
+        <p>Отримати статистику за період</p>
+        <p>Дата заїзду: <input type="date" name="start_date_hotel_stat"
+                               value=
+            <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>></p>
+        <p>Дата виїзду: <input type="date" name="end_date_hotel_stat"
+                               value=
+            <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>></p>
+        <button type="submit">Знайти</button>
+    </form>
+
+    <% } else {%>
+    <p>За період <%=session.getAttribute("start_date_hotel_stat")%> до <%=session.getAttribute("end_date_hotel_stat")%>
+    </p>
+    <p>
+        Кількість клієнтів: <%=hotelService.getClientCountForPeriod(
+            hotelService.getHotelIdByName(session.getAttribute("hotel").toString()),
+            session.getAttribute("start_date_hotel_stat").toString(),
+            session.getAttribute("end_date_hotel_stat").toString()
+    )%>
+    </p>
+
+    <p>
+        Середній час
+        бронювання: <%=hotelService.getAverageBookTime(hotelService.getHotelIdByName(session.getAttribute("hotel").toString()),
+            session.getAttribute("start_date_hotel_stat").toString(),
+            session.getAttribute("end_date_hotel_stat").toString())%> днів
+    </p>
 
     <p>
         Завантаженість кімнат:
+            <%
+            for (int i = 0; i < roomService.getRoomCount(Integer.parseInt(session.getAttribute("hotelId").toString())); i++) {
+                int[] roomsLoading = roomService.LoadingRoomsPeriod(
+                        session.getAttribute("start_date_hotel_stat").toString(),
+                        session.getAttribute("end_date_hotel_stat").toString(),
+                        i+1);
+        %>
+    <p><%=i + 1%> кімната: <%=roomsLoading[0]%> / <%=roomsLoading[1]%></p>
+    <%
+        }
+        session.setAttribute("start_date_hotel_stat", null);
+        session.setAttribute("end_date_hotel_stat", null);
+    %>
     </p>
-    <p>
-        Кількість клієнтів:
-    </p>
-    <p>
-        Середній час бронювання:
-    </p>
+
+    <%}%>
 </div>
 </body>
 </html>

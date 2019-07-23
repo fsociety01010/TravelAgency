@@ -8,6 +8,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.model.Country" %>
 <%@ page import="com.sofserve.lv_427.tourfirm.service.impl.CountryServiceImpl" %>
+<%@ page import="com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page pageEncoding="UTF-8" %>
 <html>
@@ -26,7 +27,8 @@
 
         <select name="country">
             <%
-                List<Country> countries = new CountryServiceImpl().getCountryList();
+                List<Country> countries = new ClientServiceImpl().getAvailableCountries(
+                        Integer.parseInt(session.getAttribute("clientId").toString()));
 
                 for (Country country : countries) { %>
             <option><%=country.getCountryName()%>

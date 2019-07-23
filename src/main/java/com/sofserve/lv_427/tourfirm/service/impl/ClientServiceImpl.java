@@ -2,12 +2,15 @@ package com.sofserve.lv_427.tourfirm.service.impl;
 
 import com.sofserve.lv_427.tourfirm.dao.ClientDao;
 import com.sofserve.lv_427.tourfirm.model.Client;
+import com.sofserve.lv_427.tourfirm.model.Country;
+import com.sofserve.lv_427.tourfirm.model.Visa;
 import com.sofserve.lv_427.tourfirm.service.ClientService;
 import com.sofserve.lv_427.tourfirm.service.CountryService;
 import com.sofserve.lv_427.tourfirm.service.VisaService;
 import com.sofserve.lv_427.tourfirm.utils.JdbcConnector;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientServiceImpl implements ClientService {
@@ -38,17 +41,17 @@ public class ClientServiceImpl implements ClientService {
    * @return list of countries.
    * @exception SQLException - error in sql query.
    */
-  //  public List<Country> getAvailableCountries(int clientId)
-  // throws SQLException, ClassNotFoundException {
-  //    List<Country> countries = new ArrayList<>();
-  //    List<Visa> visas = visaService.getVisas(clientId);
-  //
-  //    for(Visa visa : visas) {
-  //      countries.add(countryService.findById(visa.getCountryId()));
-  //    }
-  //
-  //    return countries;
-  //  }
+    public List<Country> getAvailableCountries(int clientId)
+   throws SQLException, ClassNotFoundException {
+      List<Country> countries = new ArrayList<>();
+      List<Visa> visas = visaService.getVisasForTheClient(clientId);
+
+      for(Visa visa : visas) {
+        countries.add(countryService.findById(visa.getCountryId()));
+      }
+
+      return countries;
+    }
 
   public int getClientId(String firstName, String lastName)
       throws SQLException, ClassNotFoundException {

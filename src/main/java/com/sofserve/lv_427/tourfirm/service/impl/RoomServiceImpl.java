@@ -52,4 +52,8 @@ public class RoomServiceImpl implements RoomService {
     loading[1] = dao.getLoadingPeriod(startDate, endDate);
     return loading;
   }
+
+  public int getRoomCount(int hotelId) throws SQLException {
+    return dao.getRoomCount(hotelId);
+  }
 }

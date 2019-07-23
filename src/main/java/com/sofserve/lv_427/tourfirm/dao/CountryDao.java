@@ -99,7 +99,7 @@ public class CountryDao {
                 + "(SELECT country_id FROM city WHERE id IN "
                 + "(SELECT city_id FROM hotel WHERE id IN "
                 + "(SELECT hotel_id FROM room where id IN "
-                + "(SELECT room_id from room_book where "
+                + "(SELECT room_id from room_book_archive where "
                 + "(client_id = ? and order_end < ?)))))");
     preparedStatement.setInt(1, clientId);
     preparedStatement.setString(2, date);

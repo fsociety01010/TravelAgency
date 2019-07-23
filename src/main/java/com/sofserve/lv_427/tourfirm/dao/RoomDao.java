@@ -109,7 +109,7 @@ public class RoomDao {
       count++;
     }
 
-    return loading / count;
+    return count==0 ? 0: loading / count;
   }
 
   /**
@@ -132,5 +132,20 @@ public class RoomDao {
       periode = resultSet.getInt("periode");
     }
     return periode;
+  }
+
+  public int getRoomCount(int hotelId) throws SQLException {
+    PreparedStatement preparedStatement =
+            connection.prepareStatement("select count(id) as count from room where hotel_id = ?");
+    preparedStatement.setInt(1, hotelId);
+
+    int roomCount = 0;
+
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+      roomCount = resultSet.getInt("count");
+    }
+
+    return roomCount;
   }
 }

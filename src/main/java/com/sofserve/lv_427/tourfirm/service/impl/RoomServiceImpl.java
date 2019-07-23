@@ -29,9 +29,19 @@ public class RoomServiceImpl implements RoomService {
     return dao.getAvailableRoomsOnDatesInHotel(startDate, endDate, roomId);
   }
 
+  /**
+   * Method that room id by it's number.
+   *
+   * @param number - room number
+   * @param hotelId - hotel id
+   * @return id of hotel.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - error if room wasn't find.
+   */
   @Override
-  public int getRoomIdByNumber(int number) throws SQLException, ClassNotFoundException {
-    return dao.getId(number);
+  public int getRoomIdByNumber(int number, int hotelId)
+      throws SQLException, ClassNotFoundException {
+    return dao.getId(number, hotelId);
   }
 
   /**
@@ -53,6 +63,13 @@ public class RoomServiceImpl implements RoomService {
     return loading;
   }
 
+  /**
+   * Method that find count of rooms in hotel.
+   *
+   * @param hotelId - hotel id
+   * @return count of rooms
+   * @exception SQLException - error in sql query.
+   */
   public int getRoomCount(int hotelId) throws SQLException {
     return dao.getRoomCount(hotelId);
   }

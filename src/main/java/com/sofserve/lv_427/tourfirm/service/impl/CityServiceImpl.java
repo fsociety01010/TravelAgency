@@ -67,6 +67,14 @@ public class CityServiceImpl implements CityService {
     return availableCities;
   }
 
+  /**
+   * Method that find city id by city name.
+   *
+   * @param name - city name
+   * @return return city id.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - returns if city wasn't find.
+   */
   @Override
   public int getCityIdByName(String name) throws SQLException, ClassNotFoundException {
     return dao.getId(name);

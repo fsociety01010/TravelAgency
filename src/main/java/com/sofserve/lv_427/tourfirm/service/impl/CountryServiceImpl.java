@@ -37,6 +37,14 @@ public class CountryServiceImpl implements CountryService {
     return dao.findById(id);
   }
 
+  /**
+   * Method that find country id by his name.
+   *
+   * @param name - country name
+   * @return country id.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - returns if client wasn't find.
+   */
   @Override
   public int getCountryIdByName(String name) throws SQLException, ClassNotFoundException {
     return dao.getId(name);

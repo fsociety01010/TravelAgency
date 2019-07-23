@@ -21,6 +21,9 @@
         </div>
         <div style="float: right; padding: 10px; text-align: right; font-size: 15px">
             <a href="/find" style="padding-left: 15px"> Знайти готель </a>
+            <a href="/countries" style="padding-left: 15px"> Країни </a>
+            <a href="/cities" style="padding-left: 15px"> Міста </a>
+            <a href="/hotels" style="padding-left: 15px"> Готелі </a>
             <a href="/about" style="padding-left: 15px"> Про нас </a>
             <a href="/profile" style="padding-left: 15px"> Профіль </a>
         </div>

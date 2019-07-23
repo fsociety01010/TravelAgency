@@ -1,4 +1,4 @@
-package com.sofserve.lv_427.tourfirm.servlet;
+package com.sofserve.lv_427.tourfirm.servlet.find;
 
 import com.sofserve.lv_427.tourfirm.service.impl.HotelServiceImpl;
 
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/hotel")
-public class FindHotelServlet extends HttpServlet {
+@WebServlet("/find_hotels")
+public class FindHotelsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.getRequestDispatcher("WEB-INF/static/find_hotel.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/static/find/find_hotels.jsp").forward(request, response);
   }
 
   @Override
@@ -32,6 +32,6 @@ public class FindHotelServlet extends HttpServlet {
       e.printStackTrace();
     }
 
-    req.getRequestDispatcher("WEB-INF/static/hotel.jsp").forward(req, resp);
+    req.getRequestDispatcher("WEB-INF/static/find/find_hotel.jsp").forward(req, resp);
   }
 }

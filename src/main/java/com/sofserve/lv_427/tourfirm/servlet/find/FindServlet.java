@@ -1,4 +1,4 @@
-package com.sofserve.lv_427.tourfirm.servlet;
+package com.sofserve.lv_427.tourfirm.servlet.find;
 
 import com.sofserve.lv_427.tourfirm.service.impl.ClientServiceImpl;
 
@@ -40,7 +40,6 @@ public class FindServlet extends HttpServlet {
       e.printStackTrace();
     }
 
-    //    req.setAttribute("clientBack", client);
     req.getRequestDispatcher("WEB-INF/static/find/find_country.jsp").forward(req, resp);
   }
 }

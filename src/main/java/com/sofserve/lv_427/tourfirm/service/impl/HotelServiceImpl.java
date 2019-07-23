@@ -16,6 +16,13 @@ public class HotelServiceImpl implements HotelService {
     dao = new HotelDao(JdbcConnector.getConnection());
   }
 
+  /**
+   * Method that find all hotels in city.
+   *
+   * @param cityId - city id
+   * @return list of hotels
+   * @exception SQLException - error in sql query.
+   */
   @Override
   public List<Hotel> getHotelsByCity(int cityId) throws SQLException {
     return dao.getHotelsByCity(cityId);
@@ -59,6 +66,14 @@ public class HotelServiceImpl implements HotelService {
     return dao.getAvailableHotelsOnDates(startDate, endDate);
   }
 
+  /**
+   * Method that find hotel id by his name.
+   *
+   * @param name - hotel name
+   * @return id of hotel.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - error if hotel wasn't find.
+   */
   @Override
   public int getHotelIdByName(String name) throws SQLException, ClassNotFoundException {
     return dao.getId(name);
@@ -90,5 +105,16 @@ public class HotelServiceImpl implements HotelService {
   public int getAverageBookTime(int hotel_id, String dateStart, String dateEnd)
       throws SQLException {
     return dao.getAverageBookTime(hotel_id, dateStart, dateEnd);
+  }
+
+  /**
+   * Method that find all hotels.
+   *
+   * @return List of hotels.
+   * @exception SQLException - error in sql query.
+   */
+  @Override
+  public List<Hotel> getAllHotels() throws SQLException {
+    return dao.getAll();
   }
 }

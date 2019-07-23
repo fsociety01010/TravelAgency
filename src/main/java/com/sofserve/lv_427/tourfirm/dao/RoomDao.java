@@ -64,10 +64,12 @@ public class RoomDao {
    * @return id of room
    * @exception SQLException - error in sql query.
    */
-  public int getId(int number) throws SQLException, ClassNotFoundException {
+  public int getId(int number, int hotelId) throws SQLException, ClassNotFoundException {
     PreparedStatement preparedStatement =
-        connection.prepareStatement("select id from room where " + ROOM_NUMBER + " = ?");
+        connection.prepareStatement(
+            "select id from room where " + ROOM_NUMBER + " = ? AND " + HOTEL_ID + " = ?");
     preparedStatement.setInt(1, number);
+    preparedStatement.setInt(2, hotelId);
 
     ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -109,7 +111,7 @@ public class RoomDao {
       count++;
     }
 
-    return count==0 ? 0: loading / count;
+    return count == 0 ? 0 : loading / count;
   }
 
   /**
@@ -134,9 +136,16 @@ public class RoomDao {
     return periode;
   }
 
+  /**
+   * Method that return room count in hotel.
+   *
+   * @param hotelId - hotel id
+   * @return return a count of rooms.
+   * @exception SQLException - error in sql query.
+   */
   public int getRoomCount(int hotelId) throws SQLException {
     PreparedStatement preparedStatement =
-            connection.prepareStatement("select count(id) as count from room where hotel_id = ?");
+        connection.prepareStatement("select count(id) as count from room where hotel_id = ?");
     preparedStatement.setInt(1, hotelId);
 
     int roomCount = 0;

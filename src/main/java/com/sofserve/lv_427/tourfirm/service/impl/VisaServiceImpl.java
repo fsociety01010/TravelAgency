@@ -40,6 +40,14 @@ public class VisaServiceImpl implements VisaService {
     return dao.getVisasForTheClient(clientId);
   }
 
+  /**
+   * Method that find visa id by his name.
+   *
+   * @param name - visa name
+   * @return id of visa.
+   * @exception SQLException - error in sql query.
+   * @exception ClassNotFoundException - error if visa wasn't find.
+   */
   @Override
   public int getVisaIdByName(String name) throws SQLException, ClassNotFoundException {
     return dao.getId(name);

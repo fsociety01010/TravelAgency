@@ -31,6 +31,8 @@
         HotelService hotelService = new HotelServiceImpl();
     %>
 
+    <p>К-сть кімнат: <b><%=roomService.getRoomCount(Integer.parseInt(session.getAttribute("hotelId").toString()))%></b></p>
+
     <% if ((session.getAttribute("start_date") == null) && (session.getAttribute("end_date") == null)) { %>
     <form action="/hotel" method="post">
         <p>Перевірити доступні кімнати</p>
@@ -43,7 +45,7 @@
                            <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>
                                min= <%= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) %>>
         </p>
-        <button type="submit">Отримати</button>
+        <button type="submit">Перевірити</button>
     </form>
 
     <% } else {%>

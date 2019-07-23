@@ -7,8 +7,6 @@ import com.sofserve.lv_427.tourfirm.model.Visa;
 
 public interface VisaService {
 
-
-
   int getVisaIdByName(String name) throws SQLException, ClassNotFoundException;
 
   int getCountVisaForCountry(int id) throws SQLException;

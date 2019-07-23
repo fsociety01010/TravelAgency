@@ -35,6 +35,7 @@
                 session.getAttribute("endDate").toString(),
                 hotelService.getHotelIdByName(session.getAttribute("hotel").toString())
         );%>
+    <p>К-сть кімнат: <b><%=roomService.getRoomCount(Integer.parseInt(session.getAttribute("hotelId").toString()))%></b></p>
 
     <p style="font-size: 12px;">
         Доступні кімнати

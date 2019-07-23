@@ -1,6 +1,7 @@
 package com.sofserve.lv_427.tourfirm;
 
 import com.sofserve.lv_427.tourfirm.dao.CountryDao;
+import com.sofserve.lv_427.tourfirm.dao.HotelDao;
 import com.sofserve.lv_427.tourfirm.dao.RoomDao;
 import com.sofserve.lv_427.tourfirm.model.*;
 import com.sofserve.lv_427.tourfirm.service.*;
@@ -37,7 +38,14 @@ public class Main {
     //    }
     //    public static void main(String[] args) throws SQLException, ClassNotFoundException,
     // ParseException {
-    System.out.println("start");
+	  
+	  System.out.println("start");
+	  
+//    HotelDao hd=new HotelDao(JdbcConnector.getConnection());
+//    System.out.println(hd.getAverageBookTime(3, "2017-07-23", "2020-10-28"));
+//    HotelServiceImpl service = new HotelServiceImpl();
+//    System.out.println(service.getAverageBookTime(2, "2017-07-23", "2020-10-28"));
+    
     //        CityServiceImpl service = new CityServiceImpl();
     //        String startDate = "2019-07-12";
     //        String endDate = "2019-07-20";
@@ -148,8 +156,7 @@ public class Main {
     //      HotelServiceImpl service = new HotelServiceImpl();
     //     System.out.println(service.getClientCountForPeriod(1, "2019-05-05", "2019-11-05"));
 
-    //    HotelServiceImpl service = new HotelServiceImpl();
-    //    System.out.println(service.getAverageBookTime(1, "2016-04-05", "2019-11-05"));
+
 
     //    ClientService clientService = new ClientServiceImpl();
     //    Client client = clientService.getClient(Integer.parseInt("2"));
@@ -172,9 +179,9 @@ public class Main {
 //            session.getAttribute("end_date_hotel_stat").toString()
 //    )
 
-    RoomService roomService = new RoomServiceImpl();
-
-    roomService.getRoomCount(1);
+//    RoomService roomService = new RoomServiceImpl();
+//
+//    roomService.getRoomCount(1);
 
 //    int[] roomsLoading = roomService.LoadingRoomsPeriod("2019-01-01", "2019-06-20", 2);
 //

@@ -150,7 +150,6 @@ public class HotelDao {
     while (resultSet.next()) {
       bookDays.add(getDaysFromPeriod(resultSet.getString(1), resultSet.getString(2)));
     }
-
     return bookDays.size() > 0
         ? bookDays.stream().mapToInt(Integer::intValue).sum() / bookDays.size()
         : 0;

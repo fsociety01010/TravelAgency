@@ -148,8 +148,8 @@ public class Main {
     //      HotelServiceImpl service = new HotelServiceImpl();
     //     System.out.println(service.getClientCountForPeriod(1, "2019-05-05", "2019-11-05"));
 
-//    HotelServiceImpl service = new HotelServiceImpl();
-//    System.out.println(service.getAverageBookTime(1, "2016-04-05", "2019-11-05"));
+    //    HotelServiceImpl service = new HotelServiceImpl();
+    //    System.out.println(service.getAverageBookTime(1, "2016-04-05", "2019-11-05"));
 
     //    ClientService clientService = new ClientServiceImpl();
     //    Client client = clientService.getClient(Integer.parseInt("2"));

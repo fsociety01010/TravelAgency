@@ -73,9 +73,7 @@ public class CountryDao {
     PreparedStatement preparedStatement =
         connection.prepareStatement("select id from country where " + COUNTRY_NAME + " = ?");
     preparedStatement.setString(1, name);
-
     ResultSet resultSet = preparedStatement.executeQuery();
-
     if (resultSet.next()) {
       return resultSet.getInt("id");
     } else {

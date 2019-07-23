@@ -31,9 +31,7 @@ public class VisaDao {
     PreparedStatement preparedStatement =
         connection.prepareStatement("select id from visa where " + VISA_NAME + " = ?");
     preparedStatement.setString(1, name);
-
     ResultSet resultSet = preparedStatement.executeQuery();
-
     if (resultSet.next()) {
       return resultSet.getInt("id");
     } else {
